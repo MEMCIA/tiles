@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Ground : MonoBehaviour
 {
-    [SerializeField] int width, height;
+   public int width, height;
     [SerializeField] float smoothness;
     [SerializeField] float seed;
     [SerializeField] TileBase groundTile, caveTile;
@@ -13,6 +13,7 @@ public class Ground : MonoBehaviour
     [Header("Caves")]
     [SerializeField] float modifier;
     int[,] map;
+    public List<int> listPerlinHeight = new List<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,7 @@ public class Ground : MonoBehaviour
             int perlinHeight;
             perlinHeight = Mathf.RoundToInt(Mathf.PerlinNoise(x / smoothness, seed) * height / 2);
             perlinHeight += height / 2;
+            listPerlinHeight.Add(perlinHeight);
             for (int y = 0; y < perlinHeight; y++)
             {
                 map[x, y] = 1;
