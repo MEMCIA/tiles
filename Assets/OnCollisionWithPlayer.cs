@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OnCollisionWithPlayer : MonoBehaviour
 {
+   [SerializeField] Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +19,11 @@ public class OnCollisionWithPlayer : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Game");
-        if (collision.CompareTag("Eagle")) Debug.Log("GameOver");
+        
+        if (collision.CompareTag("Eagle"))
+        {
+            text.text = "G A M E   O V E R";
+        }
     }
 
    

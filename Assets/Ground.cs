@@ -26,7 +26,7 @@ public class Ground : MonoBehaviour
         GroundTileMap.SetTile(new Vector3Int(6, 2, 0), null);
         GroundTileMap.SetTile(new Vector3Int(6, 3, 0), null);
         GroundTileMap.SetTile(new Vector3Int(6, 4, 0), null);
-        gameObject.AddComponent<TilemapCollider2D>();
+       // gameObject.AddComponent<TilemapCollider2D>();
 
 
     }
@@ -85,7 +85,7 @@ public class Ground : MonoBehaviour
                 if (map[x, y] == 1)
                 {
                     GroundTileMap.SetTile(new Vector3Int(x, y, 0), groundTilebase);
-                    GroundTileMap.SetColliderType(new Vector3Int(x, y, 0), Tile.ColliderType.Grid);
+                    //GroundTileMap.SetColliderType(new Vector3Int(x, y, 0), Tile.ColliderType.Grid);
                 }
             }
         }
