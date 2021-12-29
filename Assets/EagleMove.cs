@@ -9,8 +9,8 @@ public class EagleMove : MonoBehaviour
     [SerializeField] float speed = 100;
     int leftEdge = 0;
     int rightEdge;
-    public bool isMiddlePointOfStart;
-   
+    [SerializeField] bool isMiddlePointOfStart;
+    [SerializeField] bool isPointOfStart3;
     int downEdge = 0;
     [SerializeField] int directionOfMovement = 1;
     bool flip = false;
@@ -25,15 +25,37 @@ public class EagleMove : MonoBehaviour
         switch (directionOfMovement)
         {
             case 1:
-                if(isMiddlePointOfStart) transform.position = new Vector3((int)groundScript.width/2 - 2, transform.position.y);
-                if (!isMiddlePointOfStart) transform.position = new Vector3(leftEdge + 2, transform.position.y);
 
+                if(isMiddlePointOfStart)
+                {
+                    transform.position = new Vector3((int)groundScript.width / 2 + 2, transform.position.y);
+                }
+                else if (isPointOfStart3)
+                {
+                    transform.position = new Vector3((int)groundScript.width / 3 + 2, transform.position.y);
+                }
+                else
+                {
+                    transform.position = new Vector3(leftEdge + 2, transform.position.y);
+                }
+               
                 break;
             case -1:
-                if (!isMiddlePointOfStart) transform.position = new Vector3(rightEdge - 2, transform.position.y);
-                if (isMiddlePointOfStart) transform.position = new Vector3((int)groundScript.width / 2 + 2, transform.position.y);
-
-                break;
+                  
+                if (isPointOfStart3)
+                {
+                    transform.position = new Vector3((int)groundScript.width / 3 - 2, transform.position.y);
+                }
+                else if (isMiddlePointOfStart)
+                {
+                    transform.position = new Vector3((int)groundScript.width / 2 - 2, transform.position.y);
+                }
+                else
+                {
+                    transform.position = new Vector3(rightEdge - 2, transform.position.y);
+                } 
+               
+                  break;
         }
         
     }
