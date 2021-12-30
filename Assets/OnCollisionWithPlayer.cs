@@ -17,6 +17,15 @@ public class OnCollisionWithPlayer : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Win"))
+        {
+            Debug.Log("Win");
+            text.color = Color.green;
+            text.text = "W I N";
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
@@ -24,6 +33,7 @@ public class OnCollisionWithPlayer : MonoBehaviour
         {
             text.text = "G A M E   O V E R";
         }
+       
     }
 
    
