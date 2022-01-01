@@ -15,6 +15,7 @@ public class Ground : MonoBehaviour
     public int[,] map;
     public List<int> listPerlinHeight = new List<int>();
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class Ground : MonoBehaviour
             Generation();
         }
     }
+   
     void Generation()
     {
         //seed = Random.Range(-10000, 10000);

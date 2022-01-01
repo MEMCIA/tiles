@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GroundOnCollision : MonoBehaviour
+public class DestroyGround : MonoBehaviour
 {
     [SerializeField] Tilemap tilemap;
     [SerializeField] GameObject player;
@@ -13,6 +13,7 @@ public class GroundOnCollision : MonoBehaviour
     Vector3Int direction;
     Vector3Int checkPosition;
     bool playerOverGround = false;
+    [SerializeField] Player playerScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class GroundOnCollision : MonoBehaviour
     void DestroyTile()
     {
         if (playerOverGround) return;
+        if (playerScript.life <= 0) return;
         GetDirection();
         CircleCollider2D cc = player.GetComponent<CircleCollider2D>();
         float distance = cc.radius;
