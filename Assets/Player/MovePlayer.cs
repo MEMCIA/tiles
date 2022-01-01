@@ -16,7 +16,7 @@ public class MovePlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
@@ -25,7 +25,7 @@ public class MovePlayer : MonoBehaviour
         if (playerScript.life <= 0) return; 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        rb.AddForce(Vector3.right * horizontalInput * speed * Time.deltaTime);
-        rb.AddForce(Vector3.up * verticalInput * speed * Time.deltaTime);
+        rb.AddForce(Vector3.right * horizontalInput * speed * Time.fixedDeltaTime);
+        rb.AddForce(Vector3.up * verticalInput * speed * Time.fixedDeltaTime);
     }
 }
