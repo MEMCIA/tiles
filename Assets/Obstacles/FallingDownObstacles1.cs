@@ -22,16 +22,16 @@ public class FallingDownObstacles1 : MonoBehaviour
         if (player.transform.position.x != player.GetComponent<MovePlayer>().startPlayerPos.x)
         {
             if (start) return;
-            InvokeRepeating("SpawnFallingDownObstacles", 1, 0.5f);
+            InvokeRepeating("SpawnFallingDownObstacles", 1, 0.3f);
             start = true;
         }
     }
     void SpawnFallingDownObstacles()
     {
-        Vector3 endOfObstacleToWorld = tilemapWithObstacles.CellToWorld(obstacle.endOfObstaclesOnSecondMap);
-        float offsetX = endOfObstacleToWorld.x - Mathf.FloorToInt(endOfObstacleToWorld.x +1);
-        int randomX = Random.Range(0, Mathf.FloorToInt(endOfObstacleToWorld.x));
-        Vector3 spawnPos = new Vector3(randomX+offsetX, endOfObstacleToWorld.y, 0);
+        
+        float offsetX = obstacle.endOfObstaclesOnMapWithObstaclesWorld.x - Mathf.FloorToInt(obstacle.endOfObstaclesOnMapWithObstaclesWorld.x +1);
+        int randomX = Random.Range(0, Mathf.FloorToInt(obstacle.endOfObstaclesOnMapWithObstaclesWorld.x));
+        Vector3 spawnPos = new Vector3(randomX+offsetX, obstacle.endOfObstaclesOnMapWithObstaclesWorld.y, 0);
         Instantiate(prefab, spawnPos, prefab.transform.rotation);
     }
     void AddCollider()

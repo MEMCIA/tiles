@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -8,17 +9,30 @@ public class MovePlayer : MonoBehaviour
     Rigidbody2D rb;
    [SerializeField] float speed = 100;
    public Vector3 startPlayerPos;
+    [SerializeField]  Ground ground;
+    [SerializeField]  Tilemap tilemap;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        startPlayerPos = transform.position;
+        FindPositionOfPlayer();
     }
+    
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Move();
+    }
+    void FindPositionOfPlayer()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        Vector3 startPosOfPlayerSpace = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
+        Vector3 endPosOfPlayerSpace = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer, 0));
+        startPlayerPos = endPosOfPlayerSpace - startPosOfPlayerSpace;
+        startPlayerPos = new Vector3(startPlayerPos.x / 2, 0);
+        startPlayerPos = startPosOfPlayerSpace + startPlayerPos;
+
+        transform.position = startPlayerPos;
     }
     void Move()
     {

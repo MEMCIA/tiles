@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EagleMove : MonoBehaviour
 {
@@ -8,63 +9,71 @@ public class EagleMove : MonoBehaviour
     Ground groundScript;
     [SerializeField] float speed = 100;
     int leftEdge = 0;
-    int rightEdge;
+    float rightEdge;
     [SerializeField] bool isMiddlePointOfStart;
     [SerializeField] bool isPointOfStart3;
     int downEdge = 0;
     [SerializeField] int directionOfMovement = 1;
     bool flip = false;
-    
+    [SerializeField] Tilemap tilemap;
+
     // Start is called before the first frame update
     void Start()
     {
         groundScript = groundObject.GetComponent<Ground>();
-        rightEdge = groundScript.width;
-        Debug.Log(rightEdge);
-        
-        switch (directionOfMovement)
-        {
-            case 1:
+        rightEdge = tilemap.CellToWorld(new Vector3Int(groundScript.width,0,0)).x;
+        FindStartPosition();
 
-                if(isMiddlePointOfStart)
-                {
-                    transform.position = new Vector3((int)groundScript.width / 2 + 2, transform.position.y);
-                }
-                else if (isPointOfStart3)
-                {
-                    transform.position = new Vector3((int)groundScript.width / 3 + 2, transform.position.y);
-                }
-                else
-                {
-                    transform.position = new Vector3(leftEdge + 2, transform.position.y);
-                }
-               
-                break;
-            case -1:
-                  
-                if (isPointOfStart3)
-                {
-                    transform.position = new Vector3((int)groundScript.width / 3 - 2, transform.position.y);
-                }
-                else if (isMiddlePointOfStart)
-                {
-                    transform.position = new Vector3((int)groundScript.width / 2 - 2, transform.position.y);
-                }
-                else
-                {
-                    transform.position = new Vector3(rightEdge - 2, transform.position.y);
-                } 
-               
-                  break;
-        }
-        
     }
-
     // Update is called once per frame
     void Update()
     {
+        Flip();
+        transform.Translate(Vector3.right * speed * Time.deltaTime*directionOfMovement);
         
-        if(directionOfMovement ==1 && transform.position.x >= rightEdge)
+    }
+    void FindStartPosition()
+    {
+            switch (directionOfMovement)
+            {
+                case 1:
+
+                    if (isMiddlePointOfStart)
+                    {
+                        transform.position = new Vector3((int)rightEdge / 2 + 2, transform.position.y);
+                    }
+                    else if (isPointOfStart3)
+                    {
+                        transform.position = new Vector3((int)rightEdge / 3 + 2, transform.position.y);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(leftEdge + 2, transform.position.y);
+                    }
+
+                    break;
+                case -1:
+
+                    if (isPointOfStart3)
+                    {
+                        transform.position = new Vector3((int)rightEdge / 3 - 2, transform.position.y);
+                    }
+                    else if (isMiddlePointOfStart)
+                    {
+                        transform.position = new Vector3((int)rightEdge / 2 - 2, transform.position.y);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(rightEdge - 2, transform.position.y);
+                    }
+
+                    break;
+            }
+
+        }
+    void Flip()
+    {
+        if (directionOfMovement == 1 && transform.position.x >= rightEdge)
         {
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (sr.flipX)
@@ -75,8 +84,8 @@ public class EagleMove : MonoBehaviour
             {
                 sr.flipX = true;
             }
-        directionOfMovement = -1;
-            
+            directionOfMovement = -1;
+
         }
         if (directionOfMovement == -1 && transform.position.x <= leftEdge)
         {
@@ -89,12 +98,9 @@ public class EagleMove : MonoBehaviour
             {
                 sr.flipX = true;
             }
-        directionOfMovement = 1;
+            directionOfMovement = 1;
 
         }
-        
-
-        transform.Translate(Vector3.right * speed * Time.deltaTime*directionOfMovement);
-        
     }
-}
+    }
+

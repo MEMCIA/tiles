@@ -49,7 +49,7 @@ public class DestroyGround : MonoBehaviour
         checkPosition = tilemap.WorldToCell(player.transform.position + offset);
         
 
-        Debug.Log(checkPosition.x + " " + checkPosition.y);
+        //Debug.Log(checkPosition.x + " " + checkPosition.y);
 
         //Vector3  offsetAndDirection= new Vector3(Mathf.CeilToInt(velocity.x)*offset*1.01f, Mathf.CeilToInt(velocity.y) * offset * 1.01f, Mathf.CeilToInt(velocity.z) * offset * 1.01f);
         //Vector3 tileToDestroy =tilemap.WorldToCell(player.transform.position +offsetAndDirection);
@@ -72,7 +72,7 @@ public class DestroyGround : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         direction = new Vector3Int (Mathf.CeilToInt(horizontal), Mathf.CeilToInt(vertical),0);
-        Debug.Log(direction);
+        //Debug.Log(direction);
 
     }
 

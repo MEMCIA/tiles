@@ -14,21 +14,18 @@ public class Ground : MonoBehaviour
     [SerializeField] float modifier;
     public int[,] map;
     public List<int> listPerlinHeight = new List<int>();
+   
 
+    public int startXSpaceForPlayer = 5;
+    public int endXSpaceForPlayer = 8;
+    public int startYSpaceForPlayer = 2;
+    public int endYSpaceForPlayer = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         Generation();
-        GroundTileMap.SetTile(new Vector3Int(0, 0, 0), null);
-        GroundTileMap.SetTile(new Vector3Int(5, 2, 0), null);
-        GroundTileMap.SetTile(new Vector3Int(5, 3, 0), null);
-        GroundTileMap.SetTile(new Vector3Int(5, 4, 0), null);
-        GroundTileMap.SetTile(new Vector3Int(6, 2, 0), null);
-        GroundTileMap.SetTile(new Vector3Int(6, 3, 0), null);
-        GroundTileMap.SetTile(new Vector3Int(6, 4, 0), null);
-       
-
+        CreateSpaceForPlayer();
 
     }
 
@@ -39,6 +36,18 @@ public class Ground : MonoBehaviour
         {
             Generation();
         }
+    }
+    void CreateSpaceForPlayer()
+    {
+        
+        for (int i = startXSpaceForPlayer; i < endXSpaceForPlayer; i++)
+        {
+            for (int j = startYSpaceForPlayer; j < endYSpaceForPlayer; j++)
+            {
+                GroundTileMap.SetTile(new Vector3Int(i, j, 0), null);
+            }
+        }
+       
     }
    
     void Generation()
