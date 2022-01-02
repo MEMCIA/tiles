@@ -20,12 +20,16 @@ public class Ground : MonoBehaviour
     public int endXSpaceForPlayer = 8;
     public int startYSpaceForPlayer = 2;
     public int endYSpaceForPlayer = 5;
-
-    // Start is called before the first frame update
-    void Start()
+    public List<Vector3> listSpaceForPlayerPositionsWorld = new List<Vector3>();
+    private void Awake()
     {
         Generation();
         CreateSpaceForPlayer();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+       
 
     }
 
@@ -45,6 +49,7 @@ public class Ground : MonoBehaviour
             for (int j = startYSpaceForPlayer; j < endYSpaceForPlayer; j++)
             {
                 GroundTileMap.SetTile(new Vector3Int(i, j, 0), null);
+                listSpaceForPlayerPositionsWorld.Add(GroundTileMap.CellToWorld(new Vector3Int(i, j, 0)));
             }
         }
        

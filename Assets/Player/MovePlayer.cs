@@ -11,10 +11,17 @@ public class MovePlayer : MonoBehaviour
    public Vector3 startPlayerPos;
     [SerializeField]  Ground ground;
     [SerializeField]  Tilemap tilemap;
+    [SerializeField] Transform catSpritePos;
+    public Vector3 offset;
+    Vector3 startPosOfCirlce;
+    Vector3 startPosOfCatSprite;
     // Start is called before the first frame update
     void Start()
-    {
+    { startPosOfCirlce = transform.position;
+        startPosOfCatSprite = catSpritePos.position;
+        offset = startPosOfCatSprite - startPosOfCirlce;
         FindPositionOfPlayer();
+        
     }
     
 
