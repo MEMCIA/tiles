@@ -11,7 +11,7 @@ public class RedTilesDanger : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Obstacle obstacleScript;
     bool danger1Showed = false;
-    
+    int heightOfObstacle;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class RedTilesDanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.transform.position.x!=player.GetComponent<MovePlayer>().startPlayerPos.x)
+        if(player.transform.position!=player.GetComponent<MovePlayer>().startPlayerPos)
         {
             if (danger1Showed) return;
             ShowDanger();
@@ -31,15 +31,32 @@ public class RedTilesDanger : MonoBehaviour
     }
     void ShowDanger()
     {
+        heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
         StopAllCoroutines();
         StartCoroutine(MakeTilesRed());
+       
+
+
+    }
+    void SetChangedColor()
+    {
+        for (int x = 0; x < ground.width; x++)
+        {
+            for (int y = 0; y < heightOfObstacle; y++)
+            {
+                if (!tilemap.ContainsTile(tilebase)) continue;
+
+                ground.ChangeColor(x, y);
+               
+            }
+        }
     }
 
     //tile.TileMapMember.SetColor(tile.LocalPlace, Color.green);
 
     IEnumerator MakeTilesRed( )
 {
-        int heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
+       
         //tilemap.SetColor
         byte g = 255;
         byte b = 255;
@@ -70,7 +87,7 @@ public class RedTilesDanger : MonoBehaviour
     }
     IEnumerator MakeOriginalColorOfTiles()
     {
-        Debug.Log("Korutynka");
+       
         int heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
         byte g = 0;
         byte b = 0;
@@ -88,6 +105,7 @@ public class RedTilesDanger : MonoBehaviour
             b += 5;
             yield return new WaitForSeconds(0.005f);
         }
+        SetChangedColor();
     }
 }
 

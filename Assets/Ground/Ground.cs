@@ -101,7 +101,7 @@ public class Ground : MonoBehaviour
                 if (map[x, y] == 1)
                 {
                     GroundTileMap.SetTile(new Vector3Int(x, y, 0), groundTilebase);
-                   
+                    ChangeColor(x, y);
                 }
             }
         }
@@ -110,6 +110,27 @@ public class Ground : MonoBehaviour
     {
         GroundTileMap.ClearAllTiles();
         caveTileMap.ClearAllTiles();
+    }
+    public void ChangeColor(int x, int y)
+    {
+        if (y % 2 == 0)
+        {
+            if (x % 2 == 0)
+            {
+                GroundTileMap.SetColor(new Vector3Int(x,y,0), new Color32(177,248,248,255));
+            }
+           
+        }
+        else
+        {
+            if (x % 2 != 0)
+            {
+                GroundTileMap.SetColor(new Vector3Int(x, y, 0), new Color32(177, 248, 248, 255));
+            }
+           
+        }
+
+
     }
 }
 

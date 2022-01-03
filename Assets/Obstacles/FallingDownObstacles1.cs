@@ -20,7 +20,7 @@ public class FallingDownObstacles1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.x != player.GetComponent<MovePlayer>().startPlayerPos.x)
+        if (player.transform.position != player.GetComponent<MovePlayer>().startPlayerPos)
         {
             if (start) return;
             InvokeRepeating("SpawnFallingDownObstacles", 1, 1f);
