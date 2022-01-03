@@ -33,11 +33,14 @@ public class MovePlayer : MonoBehaviour
     void FindPositionOfPlayer()
     {
         rb = GetComponent<Rigidbody2D>();
+        CircleCollider2D cc = GetComponent<CircleCollider2D>();
+        float offsetF = cc.radius;
+        Vector3 offsetV = new Vector3(0, offsetF, 0);
         Vector3 startPosOfPlayerSpace = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
         Vector3 endPosOfPlayerSpace = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer, 0));
         startPlayerPos = endPosOfPlayerSpace - startPosOfPlayerSpace;
         startPlayerPos = new Vector3(startPlayerPos.x / 2, 0);
-        startPlayerPos = startPosOfPlayerSpace + startPlayerPos;
+        startPlayerPos = startPosOfPlayerSpace + startPlayerPos + offsetV;
 
         transform.position = startPlayerPos;
     }

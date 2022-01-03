@@ -9,7 +9,9 @@ public class RedTilesDanger : MonoBehaviour
     public Ground ground;
     public TileBase tilebase;
     [SerializeField] GameObject player;
+    [SerializeField] Obstacle obstacleScript;
     bool danger1Showed = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class RedTilesDanger : MonoBehaviour
 
     IEnumerator MakeTilesRed( )
 {
-        int heightOfObstacle = Mathf.FloorToInt(ground.height / 6);
+        int heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
         //tilemap.SetColor
         byte g = 255;
         byte b = 255;
@@ -69,7 +71,7 @@ public class RedTilesDanger : MonoBehaviour
     IEnumerator MakeOriginalColorOfTiles()
     {
         Debug.Log("Korutynka");
-        int heightOfObstacle = Mathf.FloorToInt(ground.height / 6);
+        int heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
         byte g = 0;
         byte b = 0;
         while(g<255)

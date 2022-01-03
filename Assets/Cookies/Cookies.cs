@@ -9,7 +9,7 @@ public class Cookies : MonoBehaviour
     [SerializeField] Obstacle obstacle;
     [SerializeField] Ground ground;
     [SerializeField] Tilemap tilemap;
-
+    [SerializeField] Grid grid;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +18,20 @@ public class Cookies : MonoBehaviour
     }
     void CreateCookies()
     {
-        float offset = 4;
+        float offset = GetComponent<CircleCollider2D>().radius+0.1f;
+        float offset2 = GetComponent<CircleCollider2D>().radius + 0.1f+ grid.cellSize.x;
+        DestroyGround destroyGround = ground.GetComponent<DestroyGround>();
         float x = obstacle.endOfObstaclesOnMapWithObstaclesWorld.x - offset;
-        float y = obstacle.endOfObstaclesOnMapWithObstaclesWorld.y - offset;
+        float y = destroyGround.endPlayerGameAreaY1 - offset;
 
         for (int i = 0; i < 5; i++)
         {
             float randomX = Random.Range(offset, x);
             float randomY = Random.Range(offset, y);
+            Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
+            Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer,0));
             /// popraw zrób cellToworld + offset
-            if (randomX >= ground.startXSpaceForPlayer && randomX <= ground.endXSpaceForPlayer)
+            if (randomX >= startPosSpaceForPlayerWorld.x - offset && randomX <= endPosForPlayerWorld.x + offset)//zrobione
             {
                 i--;
                 continue;

@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1174661580082606051}
   - component: {fileID: 8738164749687187124}
-  m_Layer: 0
+  - component: {fileID: 6418261184251838930}
+  - component: {fileID: 6383048320026793494}
+  m_Layer: 6
   m_Name: kocie ciastko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +85,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &6418261184251838930
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468772213363478027}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.010448307, y: -0.015672356}
+  serializedVersion: 2
+  m_Radius: 0.41774026
+--- !u!58 &6383048320026793494
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468772213363478027}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07313758, y: -0.07052535}
+  serializedVersion: 2
+  m_Radius: 0.41512805

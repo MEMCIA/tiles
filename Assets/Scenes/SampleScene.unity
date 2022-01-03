@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 40110858}
   - component: {fileID: 40110859}
   - component: {fileID: 40110857}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tilemap1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,6 +888,8 @@ MonoBehaviour:
   player: {fileID: 592346103}
   ground: {fileID: 534812627}
   playerScript: {fileID: 592346109}
+  obstacleScript: {fileID: 1439200099}
+  endPlayerGameAreaY1: 0
 --- !u!114 &40110859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +906,7 @@ MonoBehaviour:
   ground: {fileID: 534812628}
   tilebase: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
   player: {fileID: 592346103}
+  obstacleScript: {fileID: 1439200099}
 --- !u!1 &215476167
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 215476168}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Eagles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +956,7 @@ GameObject:
   - component: {fileID: 357064838}
   - component: {fileID: 357064837}
   - component: {fileID: 357064836}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: eagle1 (3)
   m_TagString: Eagle
   m_Icon: {fileID: 0}
@@ -1092,7 +1095,7 @@ GameObject:
   - component: {fileID: 421274935}
   - component: {fileID: 421274934}
   - component: {fileID: 421274933}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: eagle2 (3)
   m_TagString: Eagle
   m_Icon: {fileID: 0}
@@ -1549,7 +1552,7 @@ GameObject:
   - component: {fileID: 592346108}
   - component: {fileID: 592346109}
   - component: {fileID: 592346107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1706,7 +1709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610811631}
   - component: {fileID: 610811630}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GridWithObstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1753,7 +1756,7 @@ GameObject:
   - component: {fileID: 624357097}
   - component: {fileID: 624357096}
   - component: {fileID: 624357100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: eagle2 (1)
   m_TagString: Eagle
   m_Icon: {fileID: 0}
@@ -1958,7 +1961,7 @@ GameObject:
   - component: {fileID: 650573671}
   - component: {fileID: 650573674}
   - component: {fileID: 650573675}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: eagle1
   m_TagString: Eagle
   m_Icon: {fileID: 0}
@@ -2227,7 +2230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796544937}
   - component: {fileID: 796544936}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FallingDownObstacles1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2248,6 +2251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 1439200099}
   prefab: {fileID: 658769965544764098, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
+  prefab2: {fileID: 7071478039791438144, guid: d1b40362ae1e8984a8b43785ad5ab8fc, type: 3}
   tilemapWithObstacles: {fileID: 1439200098}
   player: {fileID: 592346103}
 --- !u!4 &796544937
@@ -2274,7 +2278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026899503}
   - component: {fileID: 1026899502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cookies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2297,6 +2301,7 @@ MonoBehaviour:
   obstacle: {fileID: 1439200099}
   ground: {fileID: 534812628}
   tilemap: {fileID: 0}
+  grid: {fileID: 0}
 --- !u!4 &1026899503
 Transform:
   m_ObjectHideFlags: 0
@@ -2309,7 +2314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061146668
 GameObject:
@@ -2323,7 +2328,7 @@ GameObject:
   - component: {fileID: 1061146669}
   - component: {fileID: 1061146671}
   - component: {fileID: 1061146672}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Win
   m_TagString: Win
   m_Icon: {fileID: 0}
@@ -2442,7 +2447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1093806706}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2465,89 +2470,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1241277966
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1241277968}
-  - component: {fileID: 1241277967}
-  m_Layer: 0
-  m_Name: big-crate
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1241277967
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241277966}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3fc2bbd409bf34ab6af1637bab569da1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1241277968
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241277966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6661892, y: -4.669784, z: 0}
-  m_LocalScale: {x: 5.3825965, y: 5.6517262, z: 0.51043}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1287921451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1287921453}
   - component: {fileID: 1287921452}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2606,7 +2528,7 @@ GameObject:
   - component: {fileID: 1324187111}
   - component: {fileID: 1324187114}
   - component: {fileID: 1324187115}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: eagle2
   m_TagString: Eagle
   m_Icon: {fileID: 0}
@@ -2743,9 +2665,8 @@ GameObject:
   - component: {fileID: 1439200095}
   - component: {fileID: 1439200098}
   - component: {fileID: 1439200097}
-  - component: {fileID: 1439200096}
   - component: {fileID: 1439200099}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TileMapWithObstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2766,22 +2687,6 @@ Transform:
   m_Father: {fileID: 610811631}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!19719996 &1439200096
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439200094}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5d087c890718a27479d94582f71251a1, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1439200097
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -2917,6 +2822,7 @@ MonoBehaviour:
   ground: {fileID: 534812628}
   endOfObstaclesOnMapWithObstaclesCell: {x: 0, y: 0, z: 0}
   endOfObstaclesOnMapWithObstaclesWorld: {x: 0, y: 0, z: 0}
+  heightOfObstacleAsPartOfGround: 6
 --- !u!1 &1624076267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,7 +2836,7 @@ GameObject:
   - component: {fileID: 1624076269}
   - component: {fileID: 1624076268}
   - component: {fileID: 1624076272}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: eagle1 (1)
   m_TagString: Eagle
   m_Icon: {fileID: 0}
@@ -3233,7 +3139,8 @@ GameObject:
   - component: {fileID: 1898611781}
   - component: {fileID: 1898611780}
   - component: {fileID: 1898611779}
-  m_Layer: 0
+  - component: {fileID: 1898611782}
+  m_Layer: 12
   m_Name: PlayerKot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3252,7 +3159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46382027d9e786b46b9bb2deae4a486c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 592346105}
+  player: {fileID: 592346103}
   moveplayer: {fileID: 592346106}
 --- !u!212 &1898611780
 SpriteRenderer:
@@ -3314,12 +3221,115 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898611778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.0684, y: 10.5083, z: 0}
-  m_LocalScale: {x: 1.7572, y: 1.5764009, z: 1}
+  m_LocalPosition: {x: 11.48, y: 9.5, z: 0}
+  m_LocalScale: {x: 1.1130632, y: 0.9985396, z: 0.63343}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1898611782
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898611778}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.35, y: 3.95}
+    newSize: {x: 3.35, y: 3.95}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.705, y: -1.755}
+      - {x: 0.73499995, y: -1.8449999}
+      - {x: 0.965, y: -1.915}
+      - {x: 1.3149999, y: -1.905}
+      - {x: 1.385, y: -1.895}
+      - {x: 1.485, y: -1.865}
+      - {x: 1.535, y: -1.8449999}
+      - {x: 1.5949999, y: -1.805}
+      - {x: 1.675, y: -1.7249999}
+      - {x: 1.675, y: -1.055}
+      - {x: 1.645, y: -0.84499997}
+      - {x: 1.435, y: -0.105}
+      - {x: 1.385, y: 0.095}
+      - {x: 1.3149999, y: 0.275}
+      - {x: 1.245, y: 0.59499997}
+      - {x: 1.375, y: 0.85499996}
+      - {x: 1.395, y: 0.92499995}
+      - {x: 1.405, y: 1.045}
+      - {x: 1.385, y: 1.165}
+      - {x: 1.355, y: 1.245}
+      - {x: 1.225, y: 1.505}
+      - {x: 1.175, y: 1.665}
+      - {x: 1.0849999, y: 1.915}
+      - {x: 1.015, y: 1.895}
+      - {x: 0.91499996, y: 1.8149999}
+      - {x: 0.895, y: 1.9549999}
+      - {x: 0.865, y: 1.9749999}
+      - {x: 0.79499996, y: 1.9749999}
+      - {x: 0.78499997, y: 1.9549999}
+      - {x: 0.445, y: 1.655}
+      - {x: 0.055, y: 1.605}
+      - {x: -0.205, y: 1.5849999}
+      - {x: -0.475, y: 1.775}
+      - {x: -0.555, y: 1.805}
+      - {x: -0.59499997, y: 1.765}
+      - {x: -0.705, y: 1.8549999}
+      - {x: -0.78499997, y: 1.885}
+      - {x: -0.825, y: 1.8449999}
+      - {x: -0.865, y: 1.775}
+      - {x: -0.885, y: 1.7149999}
+      - {x: -0.895, y: 1.665}
+      - {x: -1.025, y: 1.395}
+      - {x: -1.055, y: 1.3349999}
+      - {x: -1.0649999, y: 1.115}
+      - {x: -0.98499995, y: 0.805}
+      - {x: -0.98499995, y: 0.635}
+      - {x: -1.055, y: 0.33499998}
+      - {x: -1.095, y: 0.185}
+      - {x: -1.185, y: 0.015}
+      - {x: -1.435, y: -0.48499998}
+      - {x: -1.5649999, y: -0.815}
+      - {x: -1.5849999, y: -0.875}
+      - {x: -1.645, y: -1.0749999}
+      - {x: -1.675, y: -1.2049999}
+      - {x: -1.675, y: -1.605}
+      - {x: -1.665, y: -1.645}
+      - {x: -1.555, y: -1.785}
+      - {x: -1.495, y: -1.875}
+      - {x: -1.4449999, y: -1.925}
+      - {x: -1.385, y: -1.9449999}
+      - {x: -1.265, y: -1.9749999}
+      - {x: -1.115, y: -1.9749999}
+      - {x: -1.095, y: -1.925}
+      - {x: -1.095, y: -1.8349999}
+      - {x: -0.97499996, y: -1.785}
+      - {x: -0.97499996, y: -1.875}
+      - {x: -0.92499995, y: -1.915}
+      - {x: -0.765, y: -1.885}
+      - {x: -0.515, y: -1.775}
+      - {x: -0.475, y: -1.8449999}
+      - {x: -0.415, y: -1.895}
+      - {x: -0.275, y: -1.895}
+      - {x: -0.21499999, y: -1.9649999}
+      - {x: -0.16499999, y: -1.9749999}
+      - {x: 0.315, y: -1.9749999}
+      - {x: 0.465, y: -1.9449999}
+      - {x: 0.555, y: -1.8149999}
+      - {x: 0.715, y: -1.7149999}
 --- !u!1 &1919094309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,7 +3341,7 @@ GameObject:
   - component: {fileID: 1919094310}
   - component: {fileID: 1919094311}
   - component: {fileID: 1919094312}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: kot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3416,7 +3426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46382027d9e786b46b9bb2deae4a486c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 592346105}
+  player: {fileID: 0}
   moveplayer: {fileID: 592346106}
 --- !u!1 &2021963256
 GameObject:
@@ -3507,7 +3517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2104446323}
   - component: {fileID: 2104446322}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grid1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3541,60 +3551,3 @@ Transform:
   m_Father: {fileID: 1093806706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6610749760409807376
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 658769965544764098, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_Name
-      value: "Pud\u0142o3"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 130.84468
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.543637
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065194317408749719, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 74cb5c089e90ff948b8ccc7b0e3e1b7a, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2648474385512134573}
   - component: {fileID: 2648474385512134572}
   - component: {fileID: 2648474385512134571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "Pud\u0142o - Copy"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
