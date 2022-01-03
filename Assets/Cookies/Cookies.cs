@@ -22,7 +22,7 @@ public class Cookies : MonoBehaviour
         float x = obstacle.endOfObstaclesOnMapWithObstaclesWorld.x - offset;
         float y = obstacle.endOfObstaclesOnMapWithObstaclesWorld.y - offset;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             float randomX = Random.Range(offset, x);
             float randomY = Random.Range(offset, y);

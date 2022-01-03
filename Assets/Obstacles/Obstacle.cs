@@ -31,7 +31,7 @@ public class Obstacle : MonoBehaviour
     {
         // Vector3 startOfObstaclesOnFirstMap = tileMap.CellToWorld(new Vector3Int(0,Mathf.FloorToInt(ground.height/5),0));
         //Vector3Int startOfObstaclesOnSecondMap = tileMap.WorldToCell(startOfObstaclesOnFirstMap);
-        Vector3 endOfObstaclesOnFirstMap = tileMap.CellToWorld(new Vector3Int(ground.width, Mathf.FloorToInt(ground.height / 5), 0));
+        Vector3 endOfObstaclesOnFirstMap = tileMap.CellToWorld(new Vector3Int(ground.width, Mathf.FloorToInt(ground.height / 6), 0));
         endOfObstaclesOnMapWithObstaclesCell = tileMapWithObstacles.WorldToCell(endOfObstaclesOnFirstMap);
         endOfObstaclesOnMapWithObstaclesCell = new Vector3Int(endOfObstaclesOnMapWithObstaclesCell.x, endOfObstaclesOnMapWithObstaclesCell.y,0);
         endOfObstaclesOnMapWithObstaclesWorld = tileMapWithObstacles.CellToWorld(endOfObstaclesOnMapWithObstaclesCell);

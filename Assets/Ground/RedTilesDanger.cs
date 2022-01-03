@@ -37,7 +37,7 @@ public class RedTilesDanger : MonoBehaviour
 
     IEnumerator MakeTilesRed( )
 {
-        int heightOfObstacle = Mathf.FloorToInt(ground.height / 5);
+        int heightOfObstacle = Mathf.FloorToInt(ground.height / 6);
         //tilemap.SetColor
         byte g = 255;
         byte b = 255;
@@ -69,7 +69,7 @@ public class RedTilesDanger : MonoBehaviour
     IEnumerator MakeOriginalColorOfTiles()
     {
         Debug.Log("Korutynka");
-        int heightOfObstacle = Mathf.FloorToInt(ground.height / 5);
+        int heightOfObstacle = Mathf.FloorToInt(ground.height / 6);
         byte g = 0;
         byte b = 0;
         while(g<255)

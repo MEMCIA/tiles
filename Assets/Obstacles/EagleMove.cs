@@ -76,28 +76,16 @@ public class EagleMove : MonoBehaviour
         if (directionOfMovement == 1 && transform.position.x >= rightEdge)
         {
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (sr.flipX)
-            {
-                sr.flipX = false;
-            }
-            else
-            {
-                sr.flipX = true;
-            }
+            sr.flipX = !sr.flipX;
+
+          
             directionOfMovement = -1;
 
         }
         if (directionOfMovement == -1 && transform.position.x <= leftEdge)
         {
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (sr.flipX)
-            {
-                sr.flipX = false;
-            }
-            else
-            {
-                sr.flipX = true;
-            }
+            sr.flipX = !sr.flipX;
             directionOfMovement = 1;
 
         }

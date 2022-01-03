@@ -15,8 +15,14 @@ public class RotationOfCat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = playerPos.position+moveplayer.offset;
-        transform.rotation = new Quaternion(playerPos.rotation.x, playerPos.rotation.y, playerPos.rotation.z*0.6f, playerPos.rotation.w);
+        StopAllCoroutines();
+        StartCoroutine(Rotate());
         
+    }
+    IEnumerator Rotate()
+    {
+        transform.position = playerPos.position + moveplayer.offset;
+        transform.rotation = new Quaternion(playerPos.rotation.x, playerPos.rotation.y, playerPos.rotation.z * 0.3f, playerPos.rotation.w);
+        yield return new WaitForEndOfFrame();
     }
 }
