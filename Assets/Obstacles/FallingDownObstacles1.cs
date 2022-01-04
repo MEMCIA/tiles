@@ -38,7 +38,7 @@ public class FallingDownObstacles1 : MonoBehaviour
         randomX.Add(Random.Range(0, x1));
         randomX.Add(Random.Range(x1, x2));
         randomX.Add(Random.Range(x2, x3));
-        //Vector3 offsetX = new Vector3(obstacle.endOfObstaclesOnMapWithObstaclesWorld.x - Mathf.FloorToInt(obstacle.endOfObstaclesOnMapWithObstaclesWorld.x),0);
+        //Vector3 offsetX = new Vector3(obstacle.endOfObstaclesOnMapWorld.x - Mathf.FloorToInt(obstacle.endOfObstaclesOnMapWorld.x),0);
         Vector3 offsetX = new Vector3(2, 0, 0);
         GameObject prefabToUse = prefab;
         if (Random.Range(0,2)==1)

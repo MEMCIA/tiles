@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int life = 3;
+    public int life = 7;
    [SerializeField] Text text;
-    [SerializeField] List<GameObject> hearts = new List<GameObject>(3);
+   public List<GameObject> hearts = new List<GameObject>(7);
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
             text.color = Color.green;
             text.text = "W I N";
         }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

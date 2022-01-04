@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField] Tilemap tileMap;
     [SerializeField] Ground ground;
     public Vector3Int endOfObstaclesOnMapWithObstaclesCell;
-    public Vector3 endOfObstaclesOnMapWithObstaclesWorld;
+    public Vector3 endOfObstaclesOnMapWorld;
     // height of ground / heightOfObstacleAsPartOfGround = heightOfObstacleInCells
     public float heightOfObstacleAsPartOfGround = 6;
     private void Awake()
@@ -32,10 +32,10 @@ public class Obstacle : MonoBehaviour
     {
         // Vector3 startOfObstaclesOnFirstMap = tileMap.CellToWorld(new Vector3Int(0,Mathf.FloorToInt(ground.height/5),0));
         //Vector3Int startOfObstaclesOnSecondMap = tileMap.WorldToCell(startOfObstaclesOnFirstMap);
-        Vector3 endOfObstaclesOnFirstMap = tileMap.CellToWorld(new Vector3Int(ground.width, Mathf.FloorToInt(ground.height / heightOfObstacleAsPartOfGround), 0));
-        endOfObstaclesOnMapWithObstaclesCell = tileMapWithObstacles.WorldToCell(endOfObstaclesOnFirstMap);
-        endOfObstaclesOnMapWithObstaclesCell = new Vector3Int(endOfObstaclesOnMapWithObstaclesCell.x, endOfObstaclesOnMapWithObstaclesCell.y,0);
-        endOfObstaclesOnMapWithObstaclesWorld = tileMapWithObstacles.CellToWorld(endOfObstaclesOnMapWithObstaclesCell);
+        Vector3 endOfObstaclesOnFirstMapWorld = tileMap.CellToWorld(new Vector3Int(ground.width, Mathf.FloorToInt(ground.height / heightOfObstacleAsPartOfGround), 0));
+        endOfObstaclesOnMapWithObstaclesCell = tileMapWithObstacles.WorldToCell(endOfObstaclesOnFirstMapWorld);
+        //endOfObstaclesOnMapWithObstaclesCell = new Vector3Int(endOfObstaclesOnMapWithObstaclesCell.x, endOfObstaclesOnMapWithObstaclesCell.y,0);
+        //endOfObstaclesOnMapWithObstaclesWorld = tileMapWithObstacles.CellToWorld(endOfObstaclesOnMapWithObstaclesCell);
         //int width = tileMapWithObstacles.WorldToCell(end.position).x;
         for (int i = 0; i < endOfObstaclesOnMapWithObstaclesCell.x+1; i++)
         {

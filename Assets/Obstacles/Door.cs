@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 pos = new Vector3(obstacle.endOfObstaclesOnMapWithObstaclesWorld.x+3, obstacle.endOfObstaclesOnMapWithObstaclesWorld.y+3);
+        Vector3 pos = new Vector3(obstacle.endOfObstaclesOnMapWorld.x+3, obstacle.endOfObstaclesOnMapWorld.y+3);
         Instantiate(prefab, pos, prefab.transform.rotation);
     }
 

@@ -21,7 +21,7 @@ public class Cookies : MonoBehaviour
         float offset = GetComponent<CircleCollider2D>().radius+0.1f;
         float offset2 = GetComponent<CircleCollider2D>().radius + 0.1f+ grid.cellSize.x;
         DestroyGround destroyGround = ground.GetComponent<DestroyGround>();
-        float x = obstacle.endOfObstaclesOnMapWithObstaclesWorld.x - offset;
+        float x = obstacle.endOfObstaclesOnMapWorld.x - offset;
         float y = destroyGround.endPlayerGameAreaY1 - offset;
 
         for (int i = 0; i < 5; i++)
