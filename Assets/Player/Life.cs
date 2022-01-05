@@ -16,7 +16,7 @@ public class Life : MonoBehaviour
         float spaceBetweenPrefabs = sizeX / 3;
         for (int i = 1; i < player.life; i++)
         {
-            Vector3 spawnPos = new Vector3(transform.position.x-(spaceBetweenPrefabs+sizeX)*i,transform.position.y);
+            Vector3 spawnPos = new Vector3(transform.position.x-(spaceBetweenPrefabs+sizeX)*i*10,transform.position.y);
             ListLifesPictures.Add(Instantiate(prefab,spawnPos,prefab.transform.rotation));
         }
     }
