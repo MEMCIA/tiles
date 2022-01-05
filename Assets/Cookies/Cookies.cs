@@ -10,24 +10,45 @@ public class Cookies : MonoBehaviour
     [SerializeField] Ground ground;
     [SerializeField] Tilemap tilemap;
     [SerializeField] Grid grid;
+    [SerializeField] DestroyGround destroyGround;
+    float offset;
+    float offset2;
+    float x;
+    float y;
     // Start is called before the first frame update
     void Start()
     {
 
         CreateCookies();
     }
+    void CheckArea()
+    {
+
+    }
     void CreateCookies()
     {
-        float offset = GetComponent<CircleCollider2D>().radius+0.1f;
-        float offset2 = GetComponent<CircleCollider2D>().radius + 0.1f+ grid.cellSize.x;
-        DestroyGround destroyGround = ground.GetComponent<DestroyGround>();
-        float x = obstacle.endOfObstaclesOnMapWorld.x - offset;
-        float y = destroyGround.endPlayerGameAreaY1 - offset;
+        Collider2D[] colliders = prefab.GetComponents<Collider2D>();
+        float x1 = colliders[0].bounds.center.x;
+        float x2 = colliders[1].bounds.center.x;
+        float difference =Mathf.Abs(x1-x2);
+        
+        offset = prefab.GetComponent<CircleCollider2D>().radius+0.1f+difference;
+        
+       offset2 = prefab.GetComponent<CircleCollider2D>().radius*prefab.transform.lossyScale.x + 0.1f+ grid.cellSize.x +difference;// offset on the right/left/down of map
+        Debug.Log("Length"+colliders.Length);
+        Debug.Log("x1" +x1);
+        Debug.Log("x2" + x2);
+        Debug.Log("offset"+offset2);
+        Debug.Log("radius"+ prefab.GetComponent<CircleCollider2D>().radius*prefab.transform.localScale.x);
+        Debug.Log("cell"+ grid.cellSize.x);
+        Debug.Log("difference" + difference);
+        x = obstacle.endOfObstaclesOnMapWorld.x - offset2;
+        y = destroyGround.endPlayerGameAreaY1 - offset2;
 
         for (int i = 0; i < 5; i++)
         {
-            float randomX = Random.Range(offset, x);
-            float randomY = Random.Range(offset, y);
+            float randomX = Random.Range(offset2, x);
+            float randomY = Random.Range(offset2, y);
             Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
             Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer,0));
             /// popraw zrób cellToworld + offset
@@ -36,7 +57,7 @@ public class Cookies : MonoBehaviour
                 i--;
                 continue;
             }
-            if (randomY >= ground.startYSpaceForPlayer && randomY <= ground.endYSpaceForPlayer)
+            if (randomY >= startPosSpaceForPlayerWorld.y-offset && randomY <= endPosForPlayerWorld.y+offset)
             {
                 i--;
                 continue;

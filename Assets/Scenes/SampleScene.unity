@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026899501}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fabf240e72b03f249938c347a73671ad, type: 3}
   m_Name: 
@@ -2634,8 +2634,9 @@ MonoBehaviour:
   prefab: {fileID: 3468772213363478027, guid: d92b7f702c966424c9aa12271f147f1c, type: 3}
   obstacle: {fileID: 1439200099}
   ground: {fileID: 534812628}
-  tilemap: {fileID: 0}
-  grid: {fileID: 0}
+  tilemap: {fileID: 40110856}
+  grid: {fileID: 2104446322}
+  destroyGround: {fileID: 40110858}
 --- !u!4 &1026899503
 Transform:
   m_ObjectHideFlags: 0

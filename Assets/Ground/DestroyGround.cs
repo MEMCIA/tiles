@@ -16,11 +16,12 @@ public class DestroyGround : MonoBehaviour
     [SerializeField] Player playerScript;
     [SerializeField] Obstacle obstacleScript;
     public float endPlayerGameAreaY1;
+    
     // Start is called before the first frame update
     void Start()
     {
         scriptGround = ground.GetComponent<Ground>();
-        endPlayerGameAreaY1 = tilemap.CellToWorld(new Vector3Int(0,Mathf.FloorToInt(scriptGround.height / obstacleScript.heightOfObstacleAsPartOfGround - 3),0)).y;
+        endPlayerGameAreaY1 = tilemap.CellToWorld(new Vector3Int(0,Mathf.FloorToInt(scriptGround.height / obstacleScript.heightOfObstacleAsPartOfGround -3),0)).y;
         tilemap = GetComponent<Tilemap>();
         rbPlayer = player.GetComponent<Rigidbody2D>();
        
