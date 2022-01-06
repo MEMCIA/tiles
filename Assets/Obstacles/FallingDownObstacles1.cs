@@ -23,7 +23,7 @@ public class FallingDownObstacles1 : MonoBehaviour
         if (player.transform.position != player.GetComponent<MovePlayer>().startPlayerPos)
         {
             if (start) return;
-            InvokeRepeating("SpawnFallingDownObstacles", 1, 1f);
+            InvokeRepeating("SpawnFallingDownObstacles", 1, 1.5f);
             start = true;
         }
     }

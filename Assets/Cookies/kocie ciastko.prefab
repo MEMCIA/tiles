@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8738164749687187124}
   - component: {fileID: 6418261184251838930}
   - component: {fileID: 6383048320026793494}
+  - component: {fileID: 7533261033620259634}
+  - component: {fileID: 1719767152460523005}
   m_Layer: 6
   m_Name: kocie ciastko
   m_TagString: Untagged
@@ -98,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010448307, y: -0.015672356}
+  m_Offset: {x: -0.010448307, y: -0.010448217}
   serializedVersion: 2
-  m_Radius: 0.41774026
+  m_Radius: 0.41251612
 --- !u!58 &6383048320026793494
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,3 +119,36 @@ CircleCollider2D:
   m_Offset: {x: 0.07313758, y: -0.07052535}
   serializedVersion: 2
   m_Radius: 0.41512805
+--- !u!114 &7533261033620259634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468772213363478027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4da8d9cc2c0324a8daf14749705b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1719767152460523005
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468772213363478027}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

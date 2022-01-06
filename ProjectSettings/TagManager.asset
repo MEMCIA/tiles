@@ -7,6 +7,7 @@ TagManager:
   - Eagle
   - Win
   - FallingDownObstacle
+  - TilemapGround
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - TileMaps
   - Player Obstacles
   - FallingDownObstacles
-  - 
+  - PlayerCircle
   - 
   - 
   - 
