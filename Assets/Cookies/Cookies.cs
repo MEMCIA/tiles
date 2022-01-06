@@ -27,14 +27,16 @@ public class Cookies : MonoBehaviour
     }
     void CreateCookies()
     {
-        Collider2D[] colliders = prefab.GetComponents<Collider2D>();
+        Vector3 tr = prefab.transform.localScale;
+        CircleCollider2D[] colliders = prefab.GetComponents<CircleCollider2D>();
         float x1 = colliders[0].bounds.center.x;
         float x2 = colliders[1].bounds.center.x;
         float difference =Mathf.Abs(x1-x2);
-        
+        float radius = colliders[0].bounds.center.x/2;
+        Debug.Log(radius);
         offset = prefab.GetComponent<CircleCollider2D>().radius+0.1f+difference;
         
-       offset2 = prefab.GetComponent<CircleCollider2D>().radius*prefab.transform.lossyScale.x + 0.1f+ grid.cellSize.x +difference;// offset on the right/left/down of map
+       offset2 = prefab.GetComponent<CircleCollider2D>().radius*prefab.transform.localScale.x + 0.1f+ grid.cellSize.x +difference;// offset on the right/left/down of map
         Debug.Log("Length"+colliders.Length);
         Debug.Log("x1" +x1);
         Debug.Log("x2" + x2);
