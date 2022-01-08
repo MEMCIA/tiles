@@ -9,22 +9,38 @@ public class Ground : MonoBehaviour
     [SerializeField] float smoothness;
     [SerializeField] float seed;
     [SerializeField] TileBase groundTile, caveTile;
-    [SerializeField] Tilemap GroundTileMap, caveTileMap;
-    [Header("Caves")]
+    [SerializeField] Tilemap GroundTileMap, obstaclesTilemap;
+    
     [SerializeField] float modifier;
     public int[,] map;
     public List<int> listPerlinHeight = new List<int>();
-   
 
-    public int startXSpaceForPlayer = 5;
-    public int endXSpaceForPlayer = 8;
-    public int startYSpaceForPlayer = 2;
-    public int endYSpaceForPlayer = 5;
-    public List<Vector3> listSpaceForPlayerPositionsWorld = new List<Vector3>();
+    [System.NonSerialized] public float heightOfLevelWorld;
+    [System.NonSerialized] public int heightOfLevelGroundTilemap;
+    [System.NonSerialized] public int heightOfLevelObstaclesTilemap;
+    public Transform endOfLevelWorldT;
+    [System.NonSerialized] public Vector3 endOfLevelWorldV3;
+    [System.NonSerialized] public Vector3Int endOfLevelGroundTilemap;
+    [System.NonSerialized] public Vector3Int endOfLevelObstaclesTilemap;
+
+
+    [System.NonSerialized] public int startXSpaceForPlayer = 5;
+    [System.NonSerialized] public int endXSpaceForPlayer = 8;
+    [System.NonSerialized] public int startYSpaceForPlayer = 2;
+    [System.NonSerialized] public int endYSpaceForPlayer = 5;
+    [System.NonSerialized] public List<Vector3> listSpaceForPlayerPositionsWorld = new List<Vector3>();
     private void Awake()
     {
         Generation();
         CreateSpaceForPlayer();
+        Vector3 endOfLevelWorldTPosition = endOfLevelWorldT.position;
+        heightOfLevelWorld = endOfLevelWorldTPosition.y;
+        heightOfLevelGroundTilemap = GroundTileMap.WorldToCell(endOfLevelWorldTPosition).y;
+        heightOfLevelObstaclesTilemap = obstaclesTilemap.WorldToCell(endOfLevelWorldTPosition).y;
+
+        endOfLevelGroundTilemap = GroundTileMap.WorldToCell(endOfLevelWorldTPosition);
+        endOfLevelObstaclesTilemap = obstaclesTilemap.WorldToCell(endOfLevelWorldTPosition);
+        endOfLevelWorldV3 = endOfLevelWorldTPosition;
     }
     // Start is called before the first frame update
     void Start()
@@ -109,7 +125,7 @@ public class Ground : MonoBehaviour
     void clearMap()
     {
         GroundTileMap.ClearAllTiles();
-        caveTileMap.ClearAllTiles();
+       
     }
     public void ChangeColor(int x, int y)
     {

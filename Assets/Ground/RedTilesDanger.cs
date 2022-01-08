@@ -11,7 +11,7 @@ public class RedTilesDanger : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Obstacle obstacleScript;
     bool danger1Showed = false;
-    int heightOfObstacle;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class RedTilesDanger : MonoBehaviour
     }
     void ShowDanger()
     {
-        heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
+       
         StopAllCoroutines();
         StartCoroutine(MakeTilesRed());
        
@@ -42,7 +42,7 @@ public class RedTilesDanger : MonoBehaviour
     {
         for (int x = 0; x < ground.width; x++)
         {
-            for (int y = 0; y < heightOfObstacle; y++)
+            for (int y = 0; y < ground.height; y++)
             {
                 if (!tilemap.ContainsTile(tilebase)) continue;
 
@@ -62,7 +62,7 @@ public class RedTilesDanger : MonoBehaviour
         byte b = 255;
         while(g>0)
         {
-            for (int i = 0; i < heightOfObstacle; i++)
+            for (int i = 0; i < ground.height; i++)
             {
                 for (int j = 0; j < ground.width; j++)
                 {
@@ -88,12 +88,12 @@ public class RedTilesDanger : MonoBehaviour
     IEnumerator MakeOriginalColorOfTiles()
     {
        
-        int heightOfObstacle = Mathf.FloorToInt(ground.height / obstacleScript.heightOfObstacleAsPartOfGround);
+        
         byte g = 0;
         byte b = 0;
         while(g<255)
         {
-            for (int i = 0; i < heightOfObstacle; i++)
+            for (int i = 0; i < ground.height; i++)
             {
                 for (int j = 0; j < ground.width; j++)
                 {

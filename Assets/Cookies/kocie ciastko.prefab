@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1174661580082606051}
   - component: {fileID: 8738164749687187124}
-  - component: {fileID: 6418261184251838930}
-  - component: {fileID: 6383048320026793494}
   - component: {fileID: 7533261033620259634}
   - component: {fileID: 1719767152460523005}
+  - component: {fileID: 6845227529216036316}
   m_Layer: 6
   m_Name: kocie ciastko
   m_TagString: Untagged
@@ -87,38 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6418261184251838930
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3468772213363478027}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.010448307, y: -0.010448217}
-  serializedVersion: 2
-  m_Radius: 0.41251612
---- !u!58 &6383048320026793494
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3468772213363478027}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.07313758, y: -0.07052535}
-  serializedVersion: 2
-  m_Radius: 0.41512805
 --- !u!114 &7533261033620259634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,9 +106,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3468772213363478027}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -152,3 +119,66 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &6845227529216036316
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468772213363478027}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0444444, y: 0.9722222}
+    newSize: {x: 1.0444444, y: 0.9722222}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.47616693, y: -0.20309015}
+      - {x: 0.4885764, y: -0.14166667}
+      - {x: 0.49086118, y: -0.016173594}
+      - {x: 0.483021, y: 0.0171598}
+      - {x: 0.44677818, y: 0.10698576}
+      - {x: 0.41765282, y: 0.16814594}
+      - {x: 0.33660424, y: 0.24462521}
+      - {x: 0.22777778, y: 0.33906955}
+      - {x: 0.10488177, y: 0.3900557}
+      - {x: 0.010372735, y: 0.39774683}
+      - {x: -0.074468054, y: 0.39485994}
+      - {x: -0.16568801, y: 0.37086448}
+      - {x: -0.25261933, y: 0.32500002}
+      - {x: -0.30860496, y: 0.27549413}
+      - {x: -0.35202524, y: 0.2243132}
+      - {x: -0.37154937, y: 0.19667546}
+      - {x: -0.4157877, y: 0.09301656}
+      - {x: -0.41961873, y: 0.07638557}
+      - {x: -0.42849684, y: 0.01924306}
+      - {x: -0.42615426, y: -0.0665519}
+      - {x: -0.4151814, y: -0.11098211}
+      - {x: -0.40395474, y: -0.14959542}
+      - {x: -0.38941717, y: -0.18489437}
+      - {x: -0.34641674, y: -0.25931948}
+      - {x: -0.2961111, y: -0.30962506}
+      - {x: -0.23244987, y: -0.36289838}
+      - {x: -0.19505657, y: -0.3969336}
+      - {x: -0.10555556, y: -0.4502834}
+      - {x: -0.05, y: -0.4729207}
+      - {x: 0.017559623, y: -0.48605052}
+      - {x: 0.063195676, y: -0.48723176}
+      - {x: 0.1435574, y: -0.48183724}
+      - {x: 0.19429798, y: -0.47185633}
+      - {x: 0.20894942, y: -0.46605232}
+      - {x: 0.30363235, y: -0.42370144}
+      - {x: 0.3439593, y: -0.38717893}
+      - {x: 0.40946847, y: -0.31914237}
+      - {x: 0.44641674, y: -0.27240288}

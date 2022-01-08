@@ -15,13 +15,15 @@ public class DestroyGround : MonoBehaviour
     bool playerOverGround = false;
     [SerializeField] Player playerScript;
     [SerializeField] Obstacle obstacleScript;
-    public float endPlayerGameAreaY1;
+    public float endPlayerGameAreaY1World;
+    int offsetY = -2;
     
     // Start is called before the first frame update
     void Start()
     {
         scriptGround = ground.GetComponent<Ground>();
-        endPlayerGameAreaY1 = tilemap.CellToWorld(new Vector3Int(0,Mathf.FloorToInt(scriptGround.height / obstacleScript.heightOfObstacleAsPartOfGround -3),0)).y;
+        endPlayerGameAreaY1World = tilemap.CellToWorld(new Vector3Int(0,scriptGround.heightOfLevelGroundTilemap +offsetY,0)).y;
+        Debug.Log("DestroyGround heightOfLevelGroundTilemap: "+ scriptGround.heightOfLevelGroundTilemap);
         tilemap = GetComponent<Tilemap>();
         rbPlayer = player.GetComponent<Rigidbody2D>();
        
@@ -64,7 +66,7 @@ public class DestroyGround : MonoBehaviour
         //Debug.Log("x:" + (velocity * Time.deltaTime).x + "y:" + (velocity * Time.deltaTime).y);
         if (scriptGround.map[checkPosition.x, checkPosition.y]==1)
         {
-            if (checkPosition.x == 0 || checkPosition.y == 0 || checkPosition.x == scriptGround.width - 1||checkPosition.y>= scriptGround.height/ obstacleScript.heightOfObstacleAsPartOfGround-3) return;
+            if (checkPosition.x == 0 || checkPosition.y == 0 || checkPosition.x == scriptGround.width - 1||checkPosition.y>= scriptGround.heightOfLevelGroundTilemap+offsetY) return;
             tilemap.SetTile(new Vector3Int(Mathf.CeilToInt(checkPosition.x), Mathf.CeilToInt(checkPosition.y),0), null);
         }
 

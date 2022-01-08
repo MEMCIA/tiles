@@ -56,17 +56,23 @@ public class Cookies : MonoBehaviour
         Debug.Log("cell"+ grid.cellSize.x);
         Debug.Log("difference" + difference);
         */
-        offset2 = prefab.GetComponent<CircleCollider2D>().bounds.extents.x + grid.cellSize.x + 0.5f;
-        offset = prefab.GetComponent<CircleCollider2D>().bounds.extents.x + grid.cellSize.x*3 + 0.5f;
-        offset3 = prefab.GetComponent<CircleCollider2D>().bounds.extents.x + 0.5f;
-        x = obstacle.endOfObstaclesOnMapWorld.x - offset2;
-        y = destroyGround.endPlayerGameAreaY1 - offset;
+        float lengthOfCookie = prefab.GetComponent<PolygonCollider2D>().bounds.extents.x;
+        offset2 = lengthOfCookie + grid.cellSize.x + 0.5f;
+        offset = lengthOfCookie + grid.cellSize.x*2 + 0.5f;
+        offset3 = lengthOfCookie + 0.5f;
+        x = ground.endOfLevelWorldV3.x - offset2;
+        y = destroyGround.endPlayerGameAreaY1World - offset;
 
-        Debug.Log("Cookies Offset2: "+offset2);
-        Debug.Log("Cookies x" +x); 
+        Debug.Log(" Cookies x " + x);
+        Debug.Log("Cookies y" +y);
+        Debug.Log("Cookies length" + lengthOfCookie);
+        Debug.Log("Cookies cell"+ grid.cellSize.x);
+        Debug.Log("Cookies offset" + offset);
+        Debug.Log("Cookies offset2: " +offset2);
+        Debug.Log("Cookies offset3: " + offset3);
         for (int i = 0; i < 5; i++)
         {
-            float randomX = Random.Range(offset2, 100-offset2);
+            float randomX = Random.Range(offset2, x);
             float randomY = Random.Range(offset2, y);
             Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
             Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer,0));

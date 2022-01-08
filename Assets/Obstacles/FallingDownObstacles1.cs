@@ -10,6 +10,7 @@ public class FallingDownObstacles1 : MonoBehaviour
     [SerializeField] GameObject prefab2;
     [SerializeField] Tilemap tilemapWithObstacles;
     [SerializeField] GameObject player;
+    [SerializeField] Ground ground;
     bool start = false;
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,9 @@ public class FallingDownObstacles1 : MonoBehaviour
     void SpawnFallingDownObstacles()
     {
         
-        int x1 = Mathf.FloorToInt(obstacle.endOfObstaclesOnMapWithObstaclesCell.x / 3);
+        int x1 = Mathf.FloorToInt(ground.endOfLevelObstaclesTilemap.x / 3);
         int x2 = x1 * 2;
-        int x3 = obstacle.endOfObstaclesOnMapWithObstaclesCell.x;
+        int x3 = ground.endOfLevelObstaclesTilemap.x;
        
         List<int> randomX = new List<int>();
         randomX.Add(Random.Range(0, x1));
@@ -47,7 +48,7 @@ public class FallingDownObstacles1 : MonoBehaviour
         }
         foreach (var item in randomX)
         {
-            Vector3 randomPos = tilemapWithObstacles.CellToWorld(new Vector3Int(item, obstacle.endOfObstaclesOnMapWithObstaclesCell.y, 0));
+            Vector3 randomPos = tilemapWithObstacles.CellToWorld(new Vector3Int(item, ground.heightOfLevelObstaclesTilemap, 0));
             Instantiate(prefabToUse, randomPos+offsetX, prefab.transform.rotation);
         }
         
