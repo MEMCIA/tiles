@@ -26,7 +26,7 @@ public class CollisionWithPlayer : MonoBehaviour
         {
             player.life--;
             if (player.life < 0) return;
-            life.ListLifesPictures[player.life].GetComponent<SpriteRenderer>().color = Color.black;
+            life.ListLifesPictures[player.life].GetComponent<SpriteRenderer>().color = new Color32(130,129,129,255);
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }
