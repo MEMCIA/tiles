@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class FoundCookie : MonoBehaviour
 {
-    ParticleSystem ps;
-    GameObject effects;
+   
+    public bool isCookieFounded = false;
     // Start is called before the first frame update
     void Start()
     {
-        effects = GameObject.Find("Particle System");
-        ps = effects.GetComponent<ParticleSystem>();
+        
         //GetComponent<Rigidbody2D>().isKinematic = true;
     }
     
@@ -24,8 +23,11 @@ public class FoundCookie : MonoBehaviour
         if (collision.collider.CompareTag("TilemapGround"))
         {
             Debug.Log("Founded");
-            effects.transform.position = transform.position;
-            ps.Play();
+           
+            
+               
+          
+            isCookieFounded = true;
             //GetComponent<CircleCollider2D>().enabled = false;
             //Destroy(GetComponent<Rigidbody>());
             Destroy(this);

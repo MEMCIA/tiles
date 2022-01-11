@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &658769965544764098
+--- !u!1 &3471992880130465213
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4065194317408749719}
-  - component: {fileID: 3046000621897977093}
-  - component: {fileID: 3899371804533358299}
-  - component: {fileID: 8270485199336781213}
-  - component: {fileID: 8255149123014989734}
-  m_Layer: 10
-  m_Name: "Pud\u0142o3"
-  m_TagString: FallingDownObstacle
+  - component: {fileID: 3471992880130465215}
+  - component: {fileID: 3471992880130465214}
+  - component: {fileID: 2389066811814574849}
+  m_Layer: 0
+  m_Name: ShadowOfCookie
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4065194317408749719
+--- !u!4 &3471992880130465215
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658769965544764098}
+  m_GameObject: {fileID: 3471992880130465213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 130.84468, y: 8.543637, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 95.32, y: 49.43, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3046000621897977093
+--- !u!212 &3471992880130465214
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658769965544764098}
+  m_GameObject: {fileID: 3471992880130465213}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,46 +72,25 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: c84e46efd72ad684cb09df372eb23ce1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: eb195c0ff1f686244aa66e7799200e6c, type: 3}
+  m_Color: {r: 0.6698113, g: 0.653382, b: 0.653382, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.21, y: 4.56}
+  m_Size: {x: 1.0444444, y: 0.9722222}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &3899371804533358299
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!60 &2389066811814574849
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658769965544764098}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 3
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &8270485199336781213
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658769965544764098}
+  m_GameObject: {fileID: 3471992880130465213}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -124,24 +101,34 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.21, y: 4.56}
-    newSize: {x: 5.21, y: 4.56}
+    oldSize: {x: 1.0444444, y: 0.9722222}
+    newSize: {x: 1.0444444, y: 0.9722222}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.21, y: 4.56}
-  m_EdgeRadius: 0
---- !u!114 &8255149123014989734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658769965544764098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f878d7c79e7ce41960a41c15752096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Points:
+    m_Paths:
+    - - {x: 0.49444446, y: -0.19166668}
+      - {x: 0.5, y: -0.14166667}
+      - {x: 0.5, y: -0.013888889}
+      - {x: 0.49444446, y: 0.019444445}
+      - {x: 0.48333335, y: 0.075}
+      - {x: 0.42222223, y: 0.175}
+      - {x: 0.33888888, y: 0.25833333}
+      - {x: 0.22777778, y: 0.35277778}
+      - {x: 0.08888889, y: 0.40833333}
+      - {x: -0.07777778, y: 0.40833333}
+      - {x: -0.17222223, y: 0.3861111}
+      - {x: -0.27222222, y: 0.32500002}
+      - {x: -0.37777779, y: 0.21944445}
+      - {x: -0.4388889, y: 0.075}
+      - {x: -0.4388889, y: -0.06944445}
+      - {x: -0.41111112, y: -0.18055557}
+      - {x: -0.35555556, y: -0.2638889}
+      - {x: -0.23333333, y: -0.3861111}
+      - {x: -0.10555556, y: -0.46944445}
+      - {x: -0.05, y: -0.48611113}
+      - {x: 0.2, y: -0.48611113}
+      - {x: 0.33333334, y: -0.43055555}
+      - {x: 0.45555556, y: -0.28611112}

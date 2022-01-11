@@ -10,21 +10,37 @@ public class Cookies : MonoBehaviour
     [SerializeField] Ground ground;
     [SerializeField] Tilemap tilemap;
     [SerializeField] Grid grid;
+    [SerializeField] GameObject shadowOfCookiePrefab;
+    [SerializeField] GameObject startShadowOfCookie;
     [SerializeField] DestroyGround destroyGround;
+    public List<Vector3> shadowsOfCookieList = new List<Vector3>();
     float offset;
     float offset2;
     float offset3;
     float x;
     float y;
+    int numberOfCookies = 5;
     // Start is called before the first frame update
     void Start()
     {
-
+        shadowsOfCookieList.Add(startShadowOfCookie.transform.position);
+        CreateShadowOfCookies();
         CreateCookies();
     }
     void CheckArea()
     {
 
+    }
+    void CreateShadowOfCookies()
+    {
+        for (int i = 1; i < numberOfCookies; i++)
+        {
+            float distanceBetweenCookies = startShadowOfCookie.GetComponent<PolygonCollider2D>().bounds.extents.x * 3-1;
+            Vector3 spawnPos = new Vector3(startShadowOfCookie.transform.position.x - distanceBetweenCookies * i, startShadowOfCookie.transform.position.y);
+            shadowsOfCookieList.Add(spawnPos);
+            Instantiate(shadowOfCookiePrefab, spawnPos, shadowOfCookiePrefab.transform.rotation);
+
+        }
     }
     void CreateCookies()
     {
@@ -56,41 +72,55 @@ public class Cookies : MonoBehaviour
         Debug.Log("cell"+ grid.cellSize.x);
         Debug.Log("difference" + difference);
         */
-        float lengthOfCookie = prefab.GetComponent<PolygonCollider2D>().bounds.extents.x;
-        offset2 = lengthOfCookie + grid.cellSize.x + 0.5f;
-        offset = lengthOfCookie + grid.cellSize.x*2 + 0.5f;
-        offset3 = lengthOfCookie + 0.5f;
-        x = ground.endOfLevelWorldV3.x - offset2;
+        var obj = Instantiate(prefab);
+        float HalflengthOfCookie = obj.GetComponent<PolygonCollider2D>().bounds.extents.x;
+        offset2 = HalflengthOfCookie + grid.cellSize.x + 0.5f;
+        offset = HalflengthOfCookie + grid.cellSize.x*2 + 0.5f;
+        offset3 = HalflengthOfCookie + 0.5f;
+       
         y = destroyGround.endPlayerGameAreaY1World - offset;
+
+        float lengthOfCookieArea = ground.endOfLevelWorldV3.x / numberOfCookies;
+        
 
         Debug.Log(" Cookies x " + x);
         Debug.Log("Cookies y" +y);
-        Debug.Log("Cookies length" + lengthOfCookie);
+        Debug.Log("Cookies length" + HalflengthOfCookie);
         Debug.Log("Cookies cell"+ grid.cellSize.x);
         Debug.Log("Cookies offset" + offset);
         Debug.Log("Cookies offset2: " +offset2);
         Debug.Log("Cookies offset3: " + offset3);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < numberOfCookies; i++)
         {
-            float randomX = Random.Range(offset2, x);
+           
+            float randomX1 = lengthOfCookieArea * i;
+            float randomX2 = lengthOfCookieArea * i + lengthOfCookieArea;
+            float randomX;
+            if (i==0)
+            {
+                randomX = Random.Range(randomX1 + offset2, randomX2 - HalflengthOfCookie * 2);
+            }
+            else if(i==4)
+            {
+                randomX = Random.Range(randomX1 + HalflengthOfCookie * 2, randomX2 - offset2);
+            }
+            else
+            {
+                randomX = Random.Range(randomX1 + HalflengthOfCookie * 2, randomX2 - HalflengthOfCookie * 2);
+            }
+           
             float randomY = Random.Range(offset2, y);
             Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
             Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer,0));
-            /// popraw zrób cellToworld + offset
-            /// 
-            /*
-            if (randomX >= startPosSpaceForPlayerWorld.x - offset3 && randomX <= endPosForPlayerWorld.x + offset3)//zrobione
+            bool isRandomXAcceptable = !(randomX >= startPosSpaceForPlayerWorld.x - offset3 && randomX <= endPosForPlayerWorld.x + offset3);
+            bool isRandomYAcceptable = !(randomY >= startPosSpaceForPlayerWorld.y - offset3 && randomY <= endPosForPlayerWorld.y + offset3);
+            if(!isRandomXAcceptable&&!isRandomYAcceptable)
             {
                 i--;
                 continue;
             }
-            if (randomY >= startPosSpaceForPlayerWorld.y-offset3 && randomY <= endPosForPlayerWorld.y+offset3)
-            {
-                i--;
-                continue;
-            }
-            */
-            Instantiate(prefab, new Vector3(randomX, randomY), prefab.transform.rotation);
+         
+           Instantiate(prefab, new Vector3(randomX, randomY), prefab.transform.rotation);
             
         }
     }
