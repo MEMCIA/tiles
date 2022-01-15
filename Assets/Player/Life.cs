@@ -12,11 +12,12 @@ public class Life : MonoBehaviour
     void Start()
     {
         ListLifesPictures.Add(gameObject);
-       float sizeX = GetComponent<BoxCollider2D>().size.x;
-        float spaceBetweenPrefabs = sizeX / 3;
+       float sizeX = GetComponent<BoxCollider2D>().bounds.extents.x *2;
+        //float spaceBetweenPrefabs = sizeX / 7;
+        //Debug.Log(spaceBetweenPrefabs + "space between prefabs");
         for (int i = 1; i < player.life; i++)
         {
-            Vector3 spawnPos = new Vector3(transform.position.x-(spaceBetweenPrefabs+sizeX)*i*10,transform.position.y);
+            Vector3 spawnPos = new Vector3(transform.position.x-sizeX*i,transform.position.y);
             ListLifesPictures.Add(Instantiate(prefab,spawnPos,prefab.transform.rotation));
         }
     }

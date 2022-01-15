@@ -46,7 +46,7 @@ public class RedTilesDanger : MonoBehaviour
             {
                 if (!tilemap.ContainsTile(tilebase)) continue;
 
-                ground.ChangeColor(x, y);
+                ground.ChangeColor(x, y,tilemap);
                
             }
         }

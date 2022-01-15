@@ -8,8 +8,8 @@ public class Ground : MonoBehaviour
    public int width, height;
     [SerializeField] float smoothness;
     [SerializeField] float seed;
-    [SerializeField] TileBase groundTile, caveTile;
-    [SerializeField] Tilemap GroundTileMap, obstaclesTilemap;
+    [SerializeField] TileBase groundTile,upTile, backGroundTile;
+    [SerializeField] Tilemap GroundTileMap, obstaclesTilemap, backgroundTilemap;
     
     [SerializeField] float modifier;
     public int[,] map;
@@ -31,8 +31,6 @@ public class Ground : MonoBehaviour
     [System.NonSerialized] public List<Vector3> listSpaceForPlayerPositionsWorld = new List<Vector3>();
     private void Awake()
     {
-        Generation();
-        CreateSpaceForPlayer();
         Vector3 endOfLevelWorldTPosition = endOfLevelWorldT.position;
         heightOfLevelWorld = endOfLevelWorldTPosition.y;
         heightOfLevelGroundTilemap = GroundTileMap.WorldToCell(endOfLevelWorldTPosition).y;
@@ -41,6 +39,12 @@ public class Ground : MonoBehaviour
         endOfLevelGroundTilemap = GroundTileMap.WorldToCell(endOfLevelWorldTPosition);
         endOfLevelObstaclesTilemap = obstaclesTilemap.WorldToCell(endOfLevelWorldTPosition);
         endOfLevelWorldV3 = endOfLevelWorldTPosition;
+
+        Generation();
+        CreateSpaceForPlayer();
+        RenderBackgroundMap();
+
+
     }
     // Start is called before the first frame update
     void Start()
@@ -78,7 +82,7 @@ public class Ground : MonoBehaviour
         GroundTileMap.ClearAllTiles();
         map = GenerateArray(width, height, true);
         map = TerrainGeneration(map);
-        RenderMap(map, GroundTileMap, groundTile);
+        RenderMap(map, GroundTileMap);
     }
     public int[,] GenerateArray(int width, int height, bool empty)
     {
@@ -108,7 +112,7 @@ public class Ground : MonoBehaviour
         return map;
 
     }
-    void RenderMap(int[,] map, Tilemap groundTileMap, TileBase groundTilebase)
+    void RenderMap(int[,] map, Tilemap groundTileMap)
     {
         for (int x = 0; x < width; x++)
         {
@@ -116,8 +120,31 @@ public class Ground : MonoBehaviour
             {
                 if (map[x, y] == 1)
                 {
-                    GroundTileMap.SetTile(new Vector3Int(x, y, 0), groundTilebase);
-                    ChangeColor(x, y);
+                    GroundTileMap.SetTile(new Vector3Int(x, y, 0), groundTile);
+                    if(y >=endOfLevelGroundTilemap.y)
+                    {
+                        GroundTileMap.SetTile(new Vector3Int(x, y, 0), upTile);
+                        GroundTileMap.SetColor(new Vector3Int(x, y, 0), new Color32(157,188,246,255));
+                    }
+
+                    ChangeColor(x, y,groundTileMap);
+                }
+            }
+        }
+    }
+    void RenderBackgroundMap()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (map[x, y] == 1)
+                {
+                    backgroundTilemap.SetTile(new Vector3Int(x, y, 0), backGroundTile);
+                    backgroundTilemap.SetColor(new Vector3Int(x, y, 0),new Color32(255,255,255,150));
+                    //if (y >= endOfLevelGroundTilemap.y) GroundTileMap.SetTile(new Vector3Int(x, y, 0), upTile);
+
+                    //ChangeColor(x, y,backgroundTilemap);
                 }
             }
         }
@@ -127,13 +154,15 @@ public class Ground : MonoBehaviour
         GroundTileMap.ClearAllTiles();
        
     }
-    public void ChangeColor(int x, int y)
+    public void ChangeColor(int x, int y, Tilemap tilemap)
     {
-        if (y % 2 == 0)
+        //if (y >= endOfLevelGroundTilemap.y) return;
+
+            if (y % 2 == 0)
         {
             if (x % 2 == 0)
             {
-                GroundTileMap.SetColor(new Vector3Int(x,y,0), new Color32(177,248,248,255));
+                tilemap.SetColor(new Vector3Int(x,y,0), new Color32(177,248,248,255));
             }
            
         }
@@ -141,7 +170,7 @@ public class Ground : MonoBehaviour
         {
             if (x % 2 != 0)
             {
-                GroundTileMap.SetColor(new Vector3Int(x, y, 0), new Color32(177, 248, 248, 255));
+                tilemap.SetColor(new Vector3Int(x, y, 0), new Color32(177, 248, 248, 255));
             }
            
         }
