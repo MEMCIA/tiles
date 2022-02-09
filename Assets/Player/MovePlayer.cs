@@ -15,13 +15,15 @@ public class MovePlayer : MonoBehaviour
     public Vector3 offset;
     Vector3 startPosOfCirlce;
     Vector3 startPosOfCatSprite;
+   
     // Start is called before the first frame update
     void Start()
     { startPosOfCirlce = transform.position;
         startPosOfCatSprite = catSpritePos.position;
         offset = startPosOfCatSprite - startPosOfCirlce;
-        FindPositionOfPlayer();
-        
+        SetStartPositionOfPlayer();
+
+
     }
     
 
@@ -30,11 +32,11 @@ public class MovePlayer : MonoBehaviour
     {
         Move();
     }
-    void FindPositionOfPlayer()
+    void SetStartPositionOfPlayer()
     {
         rb = GetComponent<Rigidbody2D>();
         CircleCollider2D cc = GetComponent<CircleCollider2D>();
-        float offsetF = cc.radius;
+        float offsetF = cc.radius +0.1f;
         Vector3 offsetV = new Vector3(0, offsetF, 0);
         Vector3 startPosOfPlayerSpace = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
         Vector3 endPosOfPlayerSpace = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer, 0));
@@ -46,7 +48,8 @@ public class MovePlayer : MonoBehaviour
     }
     void Move()
     {
-        if (playerScript.life <= 0) return; 
+        if (playerScript.life <= 0) return;
+        if (playerScript.win) return;
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         rb.AddForce(Vector3.right * horizontalInput * speed * Time.fixedDeltaTime);

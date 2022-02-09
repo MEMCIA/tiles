@@ -49,7 +49,7 @@ public class DestroyGround : MonoBehaviour
         if (playerScript.life <= 0) return;
         GetDirection();
         CircleCollider2D cc = player.GetComponent<CircleCollider2D>();
-        float distance = cc.radius+0.9f;
+        float distance = cc.radius+1.2f;
         //Vector3 velocity = rbPlayer.velocity;
         ///Vector3 offset = rbPlayer.velocity.normalized;
         Vector3 offset = new Vector3(direction.x * distance, direction.y * distance); // mno¿ysz wektor o d³ugoœæi 1, ¿eby mia³ teraz d³ugoœæ "distance" - tak policzy³aœ zielony wektor z rysunku

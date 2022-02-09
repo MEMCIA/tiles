@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public int life = 7;
-   [SerializeField] Text text;
-   public List<GameObject> hearts = new List<GameObject>(7);
-   
+    [SerializeField] Text text;
+    public List<GameObject> hearts = new List<GameObject>(7);
+    public bool win = false;
+    public bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,6 +21,13 @@ public class Player : MonoBehaviour
     {
         Dead();
     }
+    public void Win()
+    {
+        text.color = Color.green;
+        text.text = "W I N";
+        win = true;
+    }
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Win"))
@@ -30,6 +38,7 @@ public class Player : MonoBehaviour
         }
         
     }
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -46,14 +55,14 @@ public class Player : MonoBehaviour
     {
         if (life <= 0)
         {
-           
-            
-                text.text = "G A M E   O V E R";
-           
+
+            if (win) return;
+            text.text = "G A M E   O V E R";
+            dead = true;
         }
     }
-    
 
-   
-       
+
+
+
 }

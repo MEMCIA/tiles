@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnimationOfCookie : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class AnimationOfCookie : MonoBehaviour
     Vector3 startPosOfCookie;
     ParticleSystem ps;
     GameObject effects;
+    Player playerScript;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class AnimationOfCookie : MonoBehaviour
         cookieUp = transform.Find("CookieUp").gameObject;
         effects = GameObject.Find("Particle System");
         ps = effects.GetComponent<ParticleSystem>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
 
     }
     void AnimateCookie()
@@ -93,10 +97,14 @@ public class AnimationOfCookie : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
 
+            
           
         }
-       
-      
+
+        if (cookiesScript.shadowsOfCookieList.Count == 0)
+        {
+            playerScript.Win();
+        }
 
     }
     IEnumerator MakeCookieLargerAndSmaller()
