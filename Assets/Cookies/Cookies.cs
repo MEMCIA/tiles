@@ -75,7 +75,7 @@ public class Cookies : MonoBehaviour
         var obj = Instantiate(prefab);
         float HalflengthOfCookie = obj.GetComponent<PolygonCollider2D>().bounds.extents.x;
         offset2 = HalflengthOfCookie + grid.cellSize.x + 0.5f;
-        offset = HalflengthOfCookie + grid.cellSize.x*2 + 0.5f;
+        offset = HalflengthOfCookie + grid.cellSize.y+ 0.5f;
         offset3 = HalflengthOfCookie + 0.5f;
        
         y = destroyGround.endPlayerGameAreaY1World - offset;
@@ -108,8 +108,12 @@ public class Cookies : MonoBehaviour
             {
                 randomX = Random.Range(randomX1 + HalflengthOfCookie * 2, randomX2 - HalflengthOfCookie * 2);
             }
-           
-            float randomY = Random.Range(offset2, y);
+            float randomY = Random.Range(offset2, y/2);
+            if (i%2==0)
+            {
+                randomY = Random.Range(y / 2+1,y);
+            }
+            
             Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
             Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer,0));
             bool isRandomXAcceptable = !(randomX >= startPosSpaceForPlayerWorld.x - offset3 && randomX <= endPosForPlayerWorld.x + offset3);

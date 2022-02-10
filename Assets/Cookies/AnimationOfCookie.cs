@@ -32,6 +32,7 @@ public class AnimationOfCookie : MonoBehaviour
     {
         if (!foundCookie.isCookieFounded) return;
         if (doNotRepeat) return;
+        if (playerScript.dead) return;
         cookieUp.GetComponent<SpriteRenderer>().sortingOrder = 5;
         GetComponent<SpriteRenderer>().sortingOrder = 4;
         Debug.Log("COOKIE FOUND");
@@ -58,54 +59,32 @@ public class AnimationOfCookie : MonoBehaviour
        
         while (transform.position.x !=aim.x&&transform.position.y!=aim.y)
         {
+            if (cookiesScript.shadowsOfCookieList.Count == 0)
+            {
+                playerScript.Win();
+            }
             effects.transform.position = transform.position;
             transform.Translate(direction * Time.deltaTime * 90);
             Debug.Log("Torque");
-
             cookieUp.transform.Rotate(Vector3.forward * 450 * Time.deltaTime);
             if (startPosOfCookie.x < aim.x)
             {
-
                 if (transform.position.x > aim.x) transform.position = new Vector3(aim.x, transform.position.y);
-
-
-
-
             }
             if (startPosOfCookie.x > aim.x)
             {
-
                 if (transform.position.x < aim.x) transform.position = new Vector3(aim.x, transform.position.y);
-
-
-
-
             }
-
             if (startPosOfCookie.y < aim.y)
             {
-
-                if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);
-               
-              
+                if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);           
             }
             if (startPosOfCookie.y > aim.y)
             {
-
                 if (transform.position.y < aim.y) transform.position = new Vector3(transform.position.x, aim.y);
-
             }
             yield return new WaitForEndOfFrame();
-
-            
-          
         }
-
-        if (cookiesScript.shadowsOfCookieList.Count == 0)
-        {
-            playerScript.Win();
-        }
-
     }
     IEnumerator MakeCookieLargerAndSmaller()
     {

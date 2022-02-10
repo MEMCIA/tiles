@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     }
     public void Win()
     {
+        if (dead) return;
         text.color = Color.green;
         text.text = "W I N";
         win = true;

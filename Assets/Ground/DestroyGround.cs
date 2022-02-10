@@ -51,10 +51,10 @@ public class DestroyGround : MonoBehaviour
         CircleCollider2D cc = player.GetComponent<CircleCollider2D>();
         float distance = cc.radius+1.2f;
         //Vector3 velocity = rbPlayer.velocity;
-        ///Vector3 offset = rbPlayer.velocity.normalized;
+        Vector3 offset2 = rbPlayer.velocity.normalized* new Vector3(0.9f,0.9f);
         Vector3 offset = new Vector3(direction.x * distance, direction.y * distance); // mno¿ysz wektor o d³ugoœæi 1, ¿eby mia³ teraz d³ugoœæ "distance" - tak policzy³aœ zielony wektor z rysunku
         checkPosition = tilemap.WorldToCell(player.transform.position + offset);
-        
+        Vector3Int checkPosition2 = tilemap.WorldToCell(player.transform.position + offset2);
 
         //Debug.Log(checkPosition.x + " " + checkPosition.y);
 
@@ -69,9 +69,14 @@ public class DestroyGround : MonoBehaviour
             if (checkPosition.x == 0 || checkPosition.y == 0 || checkPosition.x == scriptGround.width - 1||checkPosition.y>= scriptGround.heightOfLevelGroundTilemap+offsetY) return;
             tilemap.SetTile(new Vector3Int(Mathf.CeilToInt(checkPosition.x), Mathf.CeilToInt(checkPosition.y),0), null);
         }
+        if (scriptGround.map[checkPosition2.x, checkPosition2.y] == 1)
+        {
+            if (checkPosition2.x == 0 || checkPosition2.y == 0 || checkPosition2.x == scriptGround.width - 1 || checkPosition2.y >= scriptGround.heightOfLevelGroundTilemap + offsetY) return;
+            tilemap.SetTile(new Vector3Int(Mathf.CeilToInt(checkPosition2.x), Mathf.CeilToInt(checkPosition2.y), 0), null);
+        }
 
-       
-        
+
+
     }
 
     void GetDirection()

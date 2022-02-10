@@ -24,6 +24,7 @@ public class CollisionWithPlayer : MonoBehaviour
         Debug.Log("collision");
         if (collision.collider.CompareTag("Player"))
         {
+            if (player.win) return;
             player.life--;
             if (player.life < 0) return;
             life.ListLifesPictures[player.life].GetComponent<SpriteRenderer>().color = new Color32(130,129,129,255);
