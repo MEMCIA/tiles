@@ -88,10 +88,11 @@ public class RedTilesDanger : MonoBehaviour
         byte g = 0;
         byte b = 0;
         bool wrongColor = true;
-        while(wrongColor)
+
+        bool wrongColorUp = true;
+        bool wrongColorDown = true;
+        while (wrongColor)
         {
-            bool wrongColorUp = true;
-            bool wrongColorDown = true;
            
             r -= 5;
             g += 5;
@@ -106,7 +107,7 @@ public class RedTilesDanger : MonoBehaviour
                     if( wrongColorDown) wrongColorDown = SetImprovedColor(color, r, g, b, j, i); 
                 }
             }
-            if (wrongColorUp && wrongColorDown) wrongColor = false;
+            if (!wrongColorUp && !wrongColorDown) wrongColor = false;
            
             yield return new WaitForSeconds(0.005f);
         }
@@ -167,11 +168,11 @@ public class RedTilesDanger : MonoBehaviour
         tilemap.SetColor(new Vector3Int(x, y, 0), colorCorrected);
         if (rightB && rightG && rightR)
         {
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
 
