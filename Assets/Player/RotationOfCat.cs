@@ -23,7 +23,7 @@ public class RotationOfCat : MonoBehaviour
     IEnumerator Rotate()
     {
         transform.position = player.transform.position + moveplayer.offset;
-        transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z * 0.3f, player.transform.rotation.w);
+        transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z * 0.7f, player.transform.rotation.w);
         yield return new WaitForEndOfFrame();
         Debug.Log(player.transform.rotation.z);
     }
