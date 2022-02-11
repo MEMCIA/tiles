@@ -2959,6 +2959,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &393205627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8869184377539749449, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
+  m_PrefabInstance: {fileID: 4753296401813719968}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &393205629
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393205627}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &414679561
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +5374,7 @@ GameObject:
   - component: {fileID: 660520498}
   - component: {fileID: 660520497}
   - component: {fileID: 660520496}
+  - component: {fileID: 660520500}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5442,6 +5464,18 @@ RectTransform:
   m_AnchoredPosition: {x: 49.594524, y: 28.328886}
   m_SizeDelta: {x: 99.1891, y: 55.3969}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &660520500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660520495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db966ae0b73e06c4290af05ddf00b7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675308278
 GameObject:
   m_ObjectHideFlags: 0
@@ -5653,6 +5687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
   player: {fileID: 592346109}
+  ListLifesPictures: []
 --- !u!1 &740996750
 GameObject:
   m_ObjectHideFlags: 0
@@ -19764,6 +19799,10 @@ PrefabInstance:
     - target: {fileID: 1963065157686102781, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299940278399637551, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
       propertyPath: m_Name
