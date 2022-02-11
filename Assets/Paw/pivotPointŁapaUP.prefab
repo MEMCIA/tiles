@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 6080206888795779249}
   - component: {fileID: 123470085236160650}
   - component: {fileID: -8325957169904475120}
+  - component: {fileID: 7646452407946472727}
   m_Layer: 0
   m_Name: "pivotPoint\u0141apaUP"
   m_TagString: Untagged
@@ -295,3 +296,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145fa2c8e9f46a14eba5316e9cdf2308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &7646452407946472727
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075166617535975742}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

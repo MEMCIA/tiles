@@ -22,13 +22,11 @@ public class FishLife : MonoBehaviour
         GetComponent<CircleCollider2D>().enabled = false;
         Debug.Log("FISCH");
         fish = transform.parent.gameObject;
-        GameObject paw = collision.gameObject;
-        Vector3 offset = fish.transform.position - paw.transform.position;
-        Vector3 pawPos = new Vector3(0, 0, 0);
-        while (paw.transform.position!=pawPos)
+        GameObject paw = collision.gameObject.transform.parent.gameObject;
+        Vector3 offset = fish.transform.position - paw.transform.position; 
+        while (paw.GetComponent<Rigidbody2D>().rotation < 180) 
         {
-            fish.transform.position = paw.transform.position + offset;
-            pawPos = paw.transform.position;
+            fish.transform.position = paw.transform.position + offset;  
         }
 
     }
