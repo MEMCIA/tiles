@@ -6,11 +6,13 @@ public class CollisionWithPlayer : MonoBehaviour
 {
     Player player;
     Life life;
+    Paws paws;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         life = GameObject.Find("SpriteLife").GetComponent<Life>();
+        paws = GameObject.Find("SpawnPaw").GetComponent<Paws>();
     }
    
 
@@ -20,13 +22,13 @@ public class CollisionWithPlayer : MonoBehaviour
         
     }
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("collision");
+    {  
         if (collision.collider.CompareTag("Player"))
         {
             if (player.win) return;
             player.life--;
             if (player.life < 0) return;
+            paws.EnablePaw = true;
             life.ListLifesPictures[player.life].GetComponent<SpriteRenderer>().color = new Color32(130,129,129,255);
             GetComponent<BoxCollider2D>().enabled = false;
         }

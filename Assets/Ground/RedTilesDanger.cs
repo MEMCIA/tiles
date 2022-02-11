@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -34,16 +35,17 @@ public class RedTilesDanger : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(MakeTilesRed(ground.blueUpTiles,ground.blue1));
     }
-    void SetChangedColor()
+    IEnumerator SetChangedColor(Color32 colorUp,Color32 colorDown)
     {
+        yield return new WaitForSeconds(0.15f);
         for (int x = 0; x < ground.width; x++)
         {
             for (int y = 0; y < ground.height; y++)
             {
                 if (!tilemap.ContainsTile(tilebase)) continue;
 
-                ground.ChangeColor(x, y,tilemap,ground.blue1);
-               
+                tilemap.SetColor(new Vector3Int(x, y, 0), FindColor(x,y,colorUp,colorDown));
+
             }
         }
     }
@@ -75,7 +77,10 @@ public class RedTilesDanger : MonoBehaviour
           
         }
         //StopAllCoroutines();
-        StartCoroutine(MakeOriginalColorOfTiles(colorUp, colorDown));
+
+        StartCoroutine(SetChangedColor(colorUp, colorDown));
+
+        //StartCoroutine(MakeOriginalColorOfTiles(colorUp, colorDown));
 
 
 
