@@ -19808,7 +19808,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpriteLife
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7437505702156188084, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
 --- !u!1001 &7300184406011481462
 PrefabInstance:
