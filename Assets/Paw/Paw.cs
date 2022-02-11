@@ -22,7 +22,7 @@ public class Paw : MonoBehaviour
         float z = 0;
         while (z < 180)
         {
-            z += 0.3f;
+            z += 0.7f;
             transform.eulerAngles = new Vector3(0, 0, z);
             yield return new WaitForEndOfFrame();
         }

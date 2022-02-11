@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishLife : MonoBehaviour
 {
-    
+    GameObject fish;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,15 +16,20 @@ public class FishLife : MonoBehaviour
     {
         
     }
+    IEnumerator FindParent()
+    {
+        yield return new WaitForSeconds(0.5f);
+        fish = transform.parent.gameObject;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("FISCH");
         GameObject paw = collision.gameObject;
-        Vector3 offset = transform.position - paw.transform.position;
+        Vector3 offset = fish.transform.position - paw.transform.position;
         Vector3 pawPos = new Vector3(0, 0, 0);
         while (paw.transform.position!=pawPos)
         {
-            transform.position = paw.transform.position + offset;
+            fish.transform.position = paw.transform.position + offset;
             pawPos = paw.transform.position;
         }
     }
