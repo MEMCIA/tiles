@@ -165,6 +165,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1228,6 +1229,54 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      GrassTileset_23: 5613559155263552551
+      GrassTileset_0: 8212442670082955604
+      GrassTileset_42: 1900982082408071781
+      GrassTileset_31: -1969722008249924880
+      GrassTileset_20: 330568289738695311
+      GrassTileset_28: 8434677232719952562
+      GrassTileset_41: 7910387013323527510
+      GrassTileset_14: -1398578218351813263
+      GrassTileset_36: -8065353646968932891
+      GrassTileset_5: -1351000807804314435
+      GrassTileset_13: -7528597415829020779
+      GrassTileset_3: 2568420225719041324
+      GrassTileset_25: -7785211293267898538
+      GrassTileset_43: -4588489068271896751
+      GrassTileset_22: 1692548424311937993
+      GrassTileset_30: -1361661873672687090
+      GrassTileset_27: -486708137038291464
+      GrassTileset_29: 270916812909703853
+      GrassTileset_11: 6530681869264255465
+      GrassTileset_24: 143519316428252894
+      GrassTileset_33: -7620805869555214755
+      GrassTileset_6: 8781382095181029238
+      GrassTileset_26: -4352687088221019150
+      GrassTileset_34: 2444611805233430269
+      GrassTileset_38: 1458645992537653295
+      GrassTileset_21: 6355826214631031172
+      GrassTileset_39: 2319421661121403788
+      GrassTileset_17: 8185059864939662435
+      GrassTileset_19: 3808774657847611456
+      GrassTileset_46: -8149417098724153497
+      GrassTileset_1: -3584490159079465009
+      GrassTileset_44: 423369685964880887
+      GrassTileset_9: -5821449827284443355
+      GrassTileset_45: 8401852357021451508
+      GrassTileset_18: -8963258520762838878
+      GrassTileset_12: 4589759724239304801
+      GrassTileset_40: -2971090540887519297
+      GrassTileset_7: 2768145617235683436
+      GrassTileset_35: -6141550552481055791
+      GrassTileset_10: -8868565663274916020
+      GrassTileset_2: 7231938636183249492
+      GrassTileset_4: 3858750203666573864
+      GrassTileset_15: 1583062408579908910
+      GrassTileset_8: -1139682543083691807
+      GrassTileset_37: 5387319888195611331
+      GrassTileset_16: -7165304982432941535
+      GrassTileset_32: -5214807760018625779
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

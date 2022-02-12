@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishLife : MonoBehaviour
 {
     GameObject fish;
+    public int Number;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,14 +21,22 @@ public class FishLife : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GetComponent<CircleCollider2D>().enabled = false;
-        Debug.Log("FISCH");
+        Debug.Log("FISH");
+        if (Number != collision.gameObject.transform.parent.gameObject.GetComponent<Paw>().Number) return;
+        StartCoroutine(MoveFish(collision));
+    }
+    IEnumerator MoveFish(Collider2D collision)
+    {
         fish = transform.parent.gameObject;
-        GameObject paw = collision.gameObject.transform.parent.gameObject;
-        Vector3 offset = fish.transform.position - paw.transform.position; 
-        while (paw.GetComponent<Rigidbody2D>().rotation < 180) 
+        GameObject paw = collision.gameObject;
+        Vector3 offset = fish.transform.position - paw.transform.position;
+        int degrees = paw.transform.parent.GetComponent<Paw>().Degrees;
+        while(paw.transform.parent.transform.rotation.z> -degrees/2+5)
         {
-            fish.transform.position = paw.transform.position + offset;  
+            Debug.Log("RRR");
+            fish.transform.position = paw.transform.position + offset;
+            yield return new WaitForEndOfFrame();
         }
-
+        Debug.Log("RRX");
     }
 }

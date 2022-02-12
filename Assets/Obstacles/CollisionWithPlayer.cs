@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CollisionWithPlayer : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class CollisionWithPlayer : MonoBehaviour
             if (player.win) return;
             player.life--;
             if (player.life < 0) return;
-            paws.EnablePaw = true;
+            paws.CounterOfCollisions++;
             life.ListLifesPictures[player.life].GetComponent<SpriteRenderer>().color = new Color32(130,129,129,255);
             GetComponent<BoxCollider2D>().enabled = false;
         }

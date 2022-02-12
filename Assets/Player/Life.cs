@@ -12,13 +12,16 @@ public class Life : MonoBehaviour
     void Start()
     {
         ListLifesPictures.Add(gameObject);
+        ListLifesPictures[0].transform.GetChild(0).gameObject.GetComponent<FishLife>().Number = 0;
        float sizeX = GetComponent<BoxCollider2D>().bounds.extents.x *2;
         //float spaceBetweenPrefabs = sizeX / 7;
         //Debug.Log(spaceBetweenPrefabs + "space between prefabs");
         for (int i = 1; i < player.life; i++)
         {
             Vector3 spawnPos = new Vector3(transform.position.x-sizeX*i,transform.position.y);
-            ListLifesPictures.Add(Instantiate(prefab,spawnPos,prefab.transform.rotation));
+            GameObject l = Instantiate(prefab, spawnPos, prefab.transform.rotation);
+            ListLifesPictures.Add(l);
+            l.transform.GetChild(0).gameObject.GetComponent<FishLife>().Number = ListLifesPictures.Count - 1;
         }
     }
 

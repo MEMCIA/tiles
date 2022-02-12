@@ -22,8 +22,6 @@ public class MovePlayer : MonoBehaviour
         startPosOfCatSprite = catSpritePos.position;
         offset = startPosOfCatSprite - startPosOfCirlce;
         SetStartPositionOfPlayer();
-
-
     }
     
 

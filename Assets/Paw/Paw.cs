@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Paw : MonoBehaviour
 {
-
+    public int Degrees = 260;
+    public int Number;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +21,9 @@ public class Paw : MonoBehaviour
     public IEnumerator RotatePaw()
     {
         float z = 0;
-        while (z < 180)
+        while (z < Degrees)
         {
-            z += 0.7f;
+            z += 170f*Time.deltaTime;
             transform.eulerAngles = new Vector3(0, 0, z);
             yield return new WaitForEndOfFrame();
         }
