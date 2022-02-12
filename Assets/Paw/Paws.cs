@@ -25,11 +25,12 @@ public class Paws : Paw
 
     void MovePaw()
     {
-        for (int i = 0; i < CounterOfCollisions; i--)
+        for (int i = 0; i < CounterOfCollisions; i++)
        {
             _counterOfPaws--;
             StartCoroutine(ListOfPaws[_counterOfPaws].GetComponent<Paw>().RotatePaw());
             Debug.Log("QQQ");
+            CounterOfCollisions--;
         }
     }
 

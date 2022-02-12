@@ -20,7 +20,7 @@ public class FishLife : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GetComponent<CircleCollider2D>().enabled = false;
+        //GetComponent<CircleCollider2D>().enabled = false;
         Debug.Log("FISH");
         if (Number != collision.gameObject.transform.parent.gameObject.GetComponent<Paw>().Number) return;
         StartCoroutine(MoveFish(collision));
