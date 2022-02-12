@@ -51,7 +51,7 @@ public class DestroyGround : MonoBehaviour
         CircleCollider2D cc = player.GetComponent<CircleCollider2D>();
         float distance = cc.radius+1.2f;
         //Vector3 velocity = rbPlayer.velocity;
-        Vector3 offset2 = rbPlayer.velocity.normalized* new Vector3(0.9f,0.9f);
+        Vector3 offset2 = rbPlayer.velocity.normalized* new Vector3(1.3f,1.3f);
         Vector3 offset = new Vector3(direction.x * distance, direction.y * distance); // mno¿ysz wektor o d³ugoœæi 1, ¿eby mia³ teraz d³ugoœæ "distance" - tak policzy³aœ zielony wektor z rysunku
         checkPosition = tilemap.WorldToCell(player.transform.position + offset);
         Vector3Int checkPosition2 = tilemap.WorldToCell(player.transform.position + offset2);

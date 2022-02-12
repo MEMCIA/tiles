@@ -33,8 +33,8 @@ public class AnimationOfCookie : MonoBehaviour
         if (!foundCookie.isCookieFounded) return;
         if (doNotRepeat) return;
         if (playerScript.dead) return;
-        cookieUp.GetComponent<SpriteRenderer>().sortingOrder = 5;
-        GetComponent<SpriteRenderer>().sortingOrder = 4;
+        cookieUp.GetComponent<SpriteRenderer>().sortingOrder = 11;
+        GetComponent<SpriteRenderer>().sortingOrder = 10;
         Debug.Log("COOKIE FOUND");
         //transform.localScale = new Vector3(transform.localScale.x *2, transform.localScale.y *2, transform.localScale.z);
         //transform.localScale.Set(5, 5, 0);
