@@ -27,10 +27,7 @@ public class Cookies : MonoBehaviour
         CreateShadowOfCookies();
         CreateCookies();
     }
-    void CheckArea()
-    {
-
-    }
+    
     void CreateShadowOfCookies()
     {
         for (int i = 1; i < numberOfCookies; i++)
