@@ -10,7 +10,7 @@ public class Cookies : MonoBehaviour
     [SerializeField] Grid grid;
     [SerializeField] GameObject symbolOfCookiePrefab;
     [SerializeField] GameObject startShadowOfCookie;
-    [SerializeField] DestroyGround destroyGround;
+    [SerializeField] DestroyTiles _destroyTiles;
     public List<Vector3> shadowsOfCookieList = new List<Vector3>();
     int numberOfCookies = 5;
     // Start is called before the first frame update
@@ -63,7 +63,7 @@ public class Cookies : MonoBehaviour
     {
         float offset = HalflengthOfCookie + grid.cellSize.y + 0.5f;
         float offset2 = HalflengthOfCookie + grid.cellSize.x + 0.5f;
-        float y = destroyGround.endPlayerGameAreaY1World - offset;
+        float y = _destroyTiles.endPlayerGameAreaY1World - offset;
         float lengthOfCookieArea = ground.endOfLevelWorldV3.x / numberOfCookies;
         float randomY = Random.Range(offset2, y / 2);
         float randomX1 = lengthOfCookieArea * i;

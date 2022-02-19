@@ -33,4 +33,9 @@ public class LifeSymbols : MonoBehaviour
             l.transform.GetComponentInChildren<LifeSymbol>().Number = ListLifesPictures.Count - 1;
         }
     }
+
+    public void ChangeColorOfNextSymbol()
+    {
+        ListLifesPictures[player.Life].GetComponent<SpriteRenderer>().color = new Color32(130, 129, 129, 255);
+    }
 }

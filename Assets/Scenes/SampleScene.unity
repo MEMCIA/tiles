@@ -7700,7 +7700,7 @@ MonoBehaviour:
   grid: {fileID: 2104446322}
   symbolOfCookiePrefab: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
   startShadowOfCookie: {fileID: 154797174}
-  destroyGround: {fileID: 40110858}
+  _destroyTiles: {fileID: 40110858}
   shadowsOfCookieList: []
 --- !u!4 &1026899503
 Transform:

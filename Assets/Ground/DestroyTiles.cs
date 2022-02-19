@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class DestroyGround : MonoBehaviour
+public class DestroyTiles : MonoBehaviour
 {
     [SerializeField] Tilemap tilemap;
     [SerializeField] GameObject player;
@@ -18,7 +18,6 @@ public class DestroyGround : MonoBehaviour
     {
         scriptGround = ground.GetComponent<Ground>();
         endPlayerGameAreaY1World = tilemap.CellToWorld(new Vector3Int(0, scriptGround.heightOfLevelGroundTilemap + offsetY, 0)).y;
-        Debug.Log("DestroyGround heightOfLevelGroundTilemap: " + scriptGround.heightOfLevelGroundTilemap);
         tilemap = GetComponent<Tilemap>();
         rbPlayer = player.GetComponent<Rigidbody2D>();
     }

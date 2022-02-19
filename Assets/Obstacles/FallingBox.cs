@@ -28,7 +28,7 @@ public class FallingBox : MonoBehaviour
             player.Life--;
             if (player.Life < 0) return;
             paws.SelectPawToMove();
-            lifeSymbols.ListLifesPictures[player.Life].GetComponent<SpriteRenderer>().color = new Color32(130, 129, 129, 255);
+            lifeSymbols.ChangeColorOfNextSymbol();
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }
