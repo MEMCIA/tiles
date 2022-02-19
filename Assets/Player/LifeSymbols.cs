@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Life : MonoBehaviour
+public class LifeSymbols : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] Player player;
@@ -22,7 +22,7 @@ public class Life : MonoBehaviour
     void CreateSymbolsOfLife()
     {
         ListLifesPictures.Add(gameObject);
-        ListLifesPictures[0].transform.GetComponentInChildren<FishLife>().Number = 0;
+        ListLifesPictures[0].transform.GetComponentInChildren<LifeSymbol>().Number = 0;
         float sizeX = GetComponent<BoxCollider2D>().bounds.extents.x * 2;
 
         for (int i = 1; i < player.Life; i++)
@@ -30,7 +30,7 @@ public class Life : MonoBehaviour
             Vector3 spawnPos = new Vector3(transform.position.x - sizeX * i, transform.position.y);
             GameObject l = Instantiate(prefab, spawnPos, prefab.transform.rotation);
             ListLifesPictures.Add(l);
-            l.transform.GetComponentInChildren<FishLife>().Number = ListLifesPictures.Count - 1;
+            l.transform.GetComponentInChildren<LifeSymbol>().Number = ListLifesPictures.Count - 1;
         }
     }
 }

@@ -1,31 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-public class RotationOfCat : MonoBehaviour
+public class CatPlayerAnimation : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] MovePlayer moveplayer;
-    Rigidbody2D rb;
+    public Vector3 offsetBetweenCatAndCirlce;
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        offsetBetweenCatAndCirlce = transform.position - player.GetComponent<Player>().StartPosOfCirlce;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        StopAllCoroutines();
         StartCoroutine(Rotate());
-
     }
+
     IEnumerator Rotate()
     {
-        transform.position = player.transform.position + moveplayer.offset;
+        transform.position = player.transform.position + offsetBetweenCatAndCirlce;
         transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z * 0.5f, player.transform.rotation.w);
         yield return new WaitForEndOfFrame();
         Debug.Log(player.transform.rotation.z);
     }
-    /* rb.AddRelativeForce(player.transform.position + moveplayer.offset);
-        rb.AddTorque(player.transform.rotation.z * 0.3f);*/
 }

@@ -28,7 +28,7 @@ public class FallingDownObstacles1 : MonoBehaviour
 
     void StartSpawn()
     {
-        if (player.transform.position == movePlayer.startPlayerPos) return;
+        if (player.transform.position == playerScript.StartPlayerPos) return;
         if (AreBoxesFalling) return;
         InvokeRepeating("SpawnFallingDownObstacles", 1, 1.5f);
         AreBoxesFalling = true;

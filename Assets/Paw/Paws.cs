@@ -6,10 +6,10 @@ public class Paws : Paw
 {
     [SerializeField] GameObject _paw;
     [NonSerialized] public List<GameObject> ListOfPaws = new List<GameObject>();
-    [SerializeField] Life _life;
+    [SerializeField] LifeSymbols _lifeSymbols;
     [NonSerialized] public int CounterOfCollisions;
     int _counterOfPaws;
-    public bool StartMovingPaw = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,23 +19,19 @@ public class Paws : Paw
     // Update is called once per frame
     void Update()
     {
-        SelectPawToMove();
+        
     }
 
-    void SelectPawToMove()
+    public void SelectPawToMove()
     {
-        if (!StartMovingPaw) return;
-        
-            _counterOfPaws--;
-            StartCoroutine(ListOfPaws[_counterOfPaws].GetComponent<Paw>().RotatePaw());
-            Debug.Log("QQQ");
-            CounterOfCollisions--;
-        StartMovingPaw = false;
+        _counterOfPaws--;
+        StartCoroutine(ListOfPaws[_counterOfPaws].GetComponent<Paw>().RotatePaw());
+        CounterOfCollisions--;
     }
 
     void CreatePaws()
     {
-        foreach (var life in _life.ListLifesPictures)
+        foreach (var life in _lifeSymbols.ListLifesPictures)
         {
             Vector3 spawnPoint = new Vector3(life.transform.position.x, life.transform.position.y + 5f);
             GameObject p = Instantiate(_paw, spawnPoint, _paw.transform.rotation);

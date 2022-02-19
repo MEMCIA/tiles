@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class FishLife : MonoBehaviour
+public class LifeSymbol : MonoBehaviour
 {
     GameObject fish;
     public int Number;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +29,12 @@ public class FishLife : MonoBehaviour
         fish = transform.parent.gameObject;
         GameObject paw = collision.gameObject;
         Vector3 offset = fish.transform.position - paw.transform.position;
-        //int degrees = paw.GetComponentInParent<Paw>().Degrees;
         Paw pawScript = paw.GetComponentInParent<Paw>();
 
         while (!pawScript.MovementEnded)
         {
-            Debug.Log("RRR");
             fish.transform.position = paw.transform.position + offset;
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log("RRX");
     }
 }
