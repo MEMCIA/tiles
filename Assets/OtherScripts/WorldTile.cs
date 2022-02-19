@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class WorldTile : MonoBehaviour
@@ -12,18 +10,18 @@ public class WorldTile : MonoBehaviour
 
 
     public bool isExplored { get; set; }
-    public WorldTile ExploredFrom{ get; set; }
+    public WorldTile ExploredFrom { get; set; }
     public int Cost { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

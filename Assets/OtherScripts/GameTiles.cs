@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -24,11 +23,11 @@ public class GameTiles : MonoBehaviour
             var tile = new WorldTile
             {
                 LocalPlace = localPlace,
-            WorldLocation = Tilemap.CellToWorld(localPlace),
-            TileBase = Tilemap.GetTile(localPlace),
-            TileMapMember = Tilemap,
-            Name = localPlace.x + "," + localPlace.y,
-            Cost = 1
+                WorldLocation = Tilemap.CellToWorld(localPlace),
+                TileBase = Tilemap.GetTile(localPlace),
+                TileMapMember = Tilemap,
+                Name = localPlace.x + "," + localPlace.y,
+                Cost = 1
             };
             tiles.Add(tile.WorldLocation, tile);
         }

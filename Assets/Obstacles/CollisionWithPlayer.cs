@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class CollisionWithPlayer : MonoBehaviour
 {
@@ -15,22 +12,22 @@ public class CollisionWithPlayer : MonoBehaviour
         life = GameObject.Find("SpriteLife").GetComponent<Life>();
         paws = GameObject.Find("SpawnPaw").GetComponent<Paws>();
     }
-   
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
-    {  
+    {
         if (collision.collider.CompareTag("Player"))
         {
             if (player.win) return;
-            player.life--;
-            if (player.life < 0) return;
+            player.Life--;
+            if (player.Life < 0) return;
             paws.CounterOfCollisions++;
-            life.ListLifesPictures[player.life].GetComponent<SpriteRenderer>().color = new Color32(130,129,129,255);
+            life.ListLifesPictures[player.Life].GetComponent<SpriteRenderer>().color = new Color32(130, 129, 129, 255);
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }

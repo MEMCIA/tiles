@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Paws : Paw
 {
@@ -10,28 +9,28 @@ public class Paws : Paw
     [SerializeField] Life _life;
     [NonSerialized] public int CounterOfCollisions;
     int _counterOfPaws;
+    public bool StartMovingPaw = false;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("CreatePaws",0.2f);
-        
+        Invoke("CreatePaws", 0.2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePaw();
+        SelectPawToMove();
     }
 
-    void MovePaw()
+    void SelectPawToMove()
     {
-        for (int i = 0; i < CounterOfCollisions; i++)
-       {
+        if (!StartMovingPaw) return;
+        
             _counterOfPaws--;
             StartCoroutine(ListOfPaws[_counterOfPaws].GetComponent<Paw>().RotatePaw());
             Debug.Log("QQQ");
             CounterOfCollisions--;
-        }
+        StartMovingPaw = false;
     }
 
     void CreatePaws()
@@ -40,12 +39,9 @@ public class Paws : Paw
         {
             Vector3 spawnPoint = new Vector3(life.transform.position.x, life.transform.position.y + 5f);
             GameObject p = Instantiate(_paw, spawnPoint, _paw.transform.rotation);
-           ListOfPaws.Add(p );
+            ListOfPaws.Add(p);
             p.GetComponent<Paw>().Number = ListOfPaws.Count - 1;
         }
         _counterOfPaws = ListOfPaws.Count;
-        //_counter = ListOfPaws.Count;
-        //ListOfPaws[0].transform.eulerAngles = new Vector3(0,0,90);
-
     }
 }

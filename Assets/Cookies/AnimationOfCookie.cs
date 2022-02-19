@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AnimationOfCookie : MonoBehaviour
 {
@@ -14,7 +12,7 @@ public class AnimationOfCookie : MonoBehaviour
     ParticleSystem ps;
     GameObject effects;
     Player playerScript;
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +34,8 @@ public class AnimationOfCookie : MonoBehaviour
         cookieUp.GetComponent<SpriteRenderer>().sortingOrder = 11;
         GetComponent<SpriteRenderer>().sortingOrder = 10;
         Debug.Log("COOKIE FOUND");
-        //transform.localScale = new Vector3(transform.localScale.x *2, transform.localScale.y *2, transform.localScale.z);
-        //transform.localScale.Set(5, 5, 0);
         doNotRepeat = true;
         StartCoroutine(MakeCookieLargerAndSmaller());
-        //StopAllCoroutines();
-       
     }
     // Update is called once per frame
     void Update()
@@ -56,17 +50,18 @@ public class AnimationOfCookie : MonoBehaviour
         direction.Normalize();
         effects.GetComponent<Renderer>().sortingOrder = 6;
         ps.Play();
-       
-        while (transform.position.x !=aim.x&&transform.position.y!=aim.y)
+
+        while ((transform.position.x != aim.x) && (transform.position.y != aim.y))
         {
             if (cookiesScript.shadowsOfCookieList.Count == 0)
             {
-                playerScript.Win();
+                playerScript.WinGame();
             }
+
             effects.transform.position = transform.position;
             transform.Translate(direction * Time.deltaTime * 90);
-            Debug.Log("Torque");
             cookieUp.transform.Rotate(Vector3.forward * 450 * Time.deltaTime);
+
             if (startPosOfCookie.x < aim.x)
             {
                 if (transform.position.x > aim.x) transform.position = new Vector3(aim.x, transform.position.y);
@@ -77,7 +72,7 @@ public class AnimationOfCookie : MonoBehaviour
             }
             if (startPosOfCookie.y < aim.y)
             {
-                if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);           
+                if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);
             }
             if (startPosOfCookie.y > aim.y)
             {
@@ -89,12 +84,12 @@ public class AnimationOfCookie : MonoBehaviour
     IEnumerator MakeCookieLargerAndSmaller()
     {
         Vector3 startScale = transform.localScale;
-        while( transform.localScale.x< startScale.x+1)
+        while (transform.localScale.x < startScale.x + 1)
         {
             transform.localScale = new Vector3(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f, transform.localScale.z);
             yield return new WaitForSeconds(0.01f);
         }
-        while(transform.localScale.x>startScale.x)
+        while (transform.localScale.x > startScale.x)
         {
             transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z);
             yield return new WaitForSeconds(0.01f);

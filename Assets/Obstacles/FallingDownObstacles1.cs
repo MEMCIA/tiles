@@ -1,66 +1,68 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class FallingDownObstacles1 : MonoBehaviour
 {
-    [SerializeField] Obstacle obstacle;
     [SerializeField] GameObject prefab;
     [SerializeField] GameObject prefab2;
     [SerializeField] Tilemap tilemapWithObstacles;
     [SerializeField] GameObject player;
     [SerializeField] Ground ground;
-    bool start = false;
+    [SerializeField] TilemapRowOfObstacles _tilemapRowOfObstacles;
+    MovePlayer movePlayer;
+    Player playerScript;
+    public bool AreBoxesFalling = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        movePlayer = player.GetComponent<MovePlayer>();
+        playerScript = player.GetComponent<Player>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
         StartSpawn();
-        /*
-        if(player.GetComponent<Player>().win)
-        {
-            Debug.Log("XXX");
-            Destroy(this);
-        }
-        */
     }
+
     void StartSpawn()
     {
-        if (player.transform.position == player.GetComponent<MovePlayer>().startPlayerPos) return;
-        if (start) return;
+        if (player.transform.position == movePlayer.startPlayerPos) return;
+        if (AreBoxesFalling) return;
         InvokeRepeating("SpawnFallingDownObstacles", 1, 1.5f);
-        start = true;
-
+        AreBoxesFalling = true;
     }
+
+    List<Vector3> CreateSpawnPositions()
+    {
+        int x1 = Mathf.FloorToInt(_tilemapRowOfObstacles.endOfLevelObstaclesTilemap.x / 3);
+        int x2 = x1 * 2;
+        int x3 = _tilemapRowOfObstacles.endOfLevelObstaclesTilemap.x;
+        List<Vector3> spawnPositions = new List<Vector3>();
+        Vector3Int vectorCell1 = new Vector3Int(Random.Range(0, x1), _tilemapRowOfObstacles.heightOfLevelObstaclesTilemap,0);
+        Vector3Int vectorCell2 = new Vector3Int(Random.Range(x1, x2), _tilemapRowOfObstacles.heightOfLevelObstaclesTilemap, 0);
+        Vector3Int vectorCell3 = new Vector3Int(Random.Range(x2, x3), _tilemapRowOfObstacles.heightOfLevelObstaclesTilemap, 0);
+        spawnPositions.Add(tilemapWithObstacles.CellToWorld(vectorCell1));   
+        spawnPositions.Add(tilemapWithObstacles.CellToWorld(vectorCell2));  
+        spawnPositions.Add(tilemapWithObstacles.CellToWorld(vectorCell3));
+        return spawnPositions;
+    }
+
     void SpawnFallingDownObstacles()
     {
-        if (player.GetComponent<Player>().win) return;
-        if (player.GetComponent<Player>().dead) return;
-        int x1 = Mathf.FloorToInt(ground.endOfLevelObstaclesTilemap.x / 3);
-        int x2 = x1 * 2;
-        int x3 = ground.endOfLevelObstaclesTilemap.x;
-
-        List<int> randomX = new List<int>();
-        randomX.Add(Random.Range(0, x1));
-        randomX.Add(Random.Range(x1, x2));
-        randomX.Add(Random.Range(x2, x3));
-        //Vector3 offsetX = new Vector3(obstacle.endOfObstaclesOnMapWorld.x - Mathf.FloorToInt(obstacle.endOfObstaclesOnMapWorld.x),0);
-        Vector3 offsetX = new Vector3(2, 0, 0);
+        if (playerScript.win) return;
+        if (playerScript.dead) return;
+        List<Vector3> spawnPositions = CreateSpawnPositions();
         GameObject prefabToUse = prefab;
+
         if (Random.Range(0, 2) == 1)
         {
             prefabToUse = prefab2;
         }
-        foreach (var item in randomX)
+        foreach (var item in spawnPositions)
         {
-            Vector3 randomPos = tilemapWithObstacles.CellToWorld(new Vector3Int(item, ground.heightOfLevelObstaclesTilemap, 0));
-            Instantiate(prefabToUse, randomPos + offsetX, prefab.transform.rotation);
+            Instantiate(prefabToUse, item, prefab.transform.rotation);
         }
 
     }
