@@ -13,6 +13,7 @@ public class Cookies : MonoBehaviour
     [SerializeField] DestroyTiles _destroyTiles;
     public List<Vector3> shadowsOfCookieList = new List<Vector3>();
     int numberOfCookies = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class Cookies : MonoBehaviour
             Instantiate(symbolOfCookiePrefab, spawnPos, symbolOfCookiePrefab.transform.rotation);
         }
     }
+
     void CreateCookies()
     {
         var obj = Instantiate(prefab);

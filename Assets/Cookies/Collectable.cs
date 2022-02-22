@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class FoundCookie : MonoBehaviour
+public class Collectable : MonoBehaviour
 {
     public bool isCookieFounded = false;
+
     // Start is called before the first frame update
     void Start()
     {

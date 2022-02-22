@@ -13,7 +13,7 @@ public class Paws : Paw
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("CreatePaws", 0.2f);
+        CreatePaws();
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class Paws : Paw
 
     void CreatePaws()
     {
+        _lifeSymbols.GetLifePictures();
         foreach (var life in _lifeSymbols.ListLifesPictures)
         {
             Vector3 spawnPoint = new Vector3(life.transform.position.x, life.transform.position.y + 5f);

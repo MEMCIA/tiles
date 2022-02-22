@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AnimationOfCookie : MonoBehaviour
 {
-    FoundCookie foundCookie;
+    Collectable _collectable;
     Rigidbody2D rb;
     bool doNotRepeat = false;
     Cookies cookiesScript;
@@ -17,7 +17,7 @@ public class AnimationOfCookie : MonoBehaviour
     void Start()
     {
         startPosOfCookie = transform.position;
-        foundCookie = GetComponent<FoundCookie>();
+        _collectable = GetComponent<Collectable>();
         rb = GetComponent<Rigidbody2D>();
         cookiesScript = GameObject.FindObjectOfType<Cookies>();
         cookieUp = transform.Find("CookieUp").gameObject;
@@ -26,14 +26,14 @@ public class AnimationOfCookie : MonoBehaviour
         playerScript = GameObject.Find("Player").GetComponent<Player>();
 
     }
+
     void AnimateCookie()
     {
-        if (!foundCookie.isCookieFounded) return;
+        if (!_collectable.isCookieFounded) return;
         if (doNotRepeat) return;
         if (playerScript.dead) return;
         cookieUp.GetComponent<SpriteRenderer>().sortingOrder = 11;
         GetComponent<SpriteRenderer>().sortingOrder = 10;
-        Debug.Log("COOKIE FOUND");
         doNotRepeat = true;
         StartCoroutine(MakeCookieLargerAndSmaller());
     }
