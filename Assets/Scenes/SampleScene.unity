@@ -1332,6 +1332,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
   m_PrefabInstance: {fileID: 7300184406011481462}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &154797178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154797174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2a3b93fbdbbc74ca83be2ae448ccf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startCollectableShadow: {fileID: 154797174}
+  _symbolOfCollectablePrefab: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
+  _collectables: {fileID: 1026899502}
+  SymbolsOfCollectable: []
 --- !u!1 &171740498
 GameObject:
   m_ObjectHideFlags: 0
@@ -4755,6 +4771,7 @@ MonoBehaviour:
   ground: {fileID: 534812628}
   tilemap: {fileID: 40110856}
   StartPlayerPos: {x: 0, y: 0, z: 0}
+  _collectableSymbols: {fileID: 154797178}
 --- !u!1 &610811629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5813,7 +5830,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
   player: {fileID: 592346109}
-  ListLifesPictures: []
 --- !u!1 &740996750
 GameObject:
   m_ObjectHideFlags: 0
@@ -7698,10 +7714,8 @@ MonoBehaviour:
   ground: {fileID: 534812628}
   tilemap: {fileID: 40110856}
   grid: {fileID: 2104446322}
-  symbolOfCookiePrefab: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
-  startShadowOfCookie: {fileID: 154797174}
   _destroyTiles: {fileID: 40110858}
-  shadowsOfCookieList: []
+  NumberOfCollectables: 5
 --- !u!4 &1026899503
 Transform:
   m_ObjectHideFlags: 0

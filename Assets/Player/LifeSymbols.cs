@@ -5,7 +5,7 @@ public class LifeSymbols : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] Player player;
-    public List<GameObject> ListLifesPictures;
+    List<GameObject> ListLifesPictures;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class LifeSymbols : MonoBehaviour
     void CreateSymbolsOfLife()
     {
         if (ListLifesPictures != null) return;
+        ListLifesPictures = new List<GameObject>();
         ListLifesPictures.Add(gameObject);
         ListLifesPictures[0].transform.GetComponentInChildren<LifeSymbol>().Number = 0;
         float sizeX = GetComponent<BoxCollider2D>().bounds.extents.x * 2;

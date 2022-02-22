@@ -31,8 +31,7 @@ public class Paws : Paw
 
     void CreatePaws()
     {
-        _lifeSymbols.GetLifePictures();
-        foreach (var life in _lifeSymbols.ListLifesPictures)
+        foreach (var life in _lifeSymbols.GetLifePictures())
         {
             Vector3 spawnPoint = new Vector3(life.transform.position.x, life.transform.position.y + 5f);
             GameObject p = Instantiate(_paw, spawnPoint, _paw.transform.rotation);

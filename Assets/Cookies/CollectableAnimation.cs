@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class AnimationOfCookie : MonoBehaviour
+public class CollectableAnimation : MonoBehaviour
 {
     Collectable _collectable;
     Rigidbody2D rb;
     bool doNotRepeat = false;
-    Cookies cookiesScript;
+    Collectables _collectables;
+    CollectableSymbols _collectableSymbols;
     GameObject cookieUp;
-    Vector3 startPosOfCookie;
+    Vector3 startPosOfCollectable;
     ParticleSystem ps;
     GameObject effects;
     Player playerScript;
@@ -16,18 +17,24 @@ public class AnimationOfCookie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPosOfCookie = transform.position;
+        _collectableSymbols = FindObjectOfType<CollectableSymbols>();
+        startPosOfCollectable = transform.position;
         _collectable = GetComponent<Collectable>();
         rb = GetComponent<Rigidbody2D>();
-        cookiesScript = GameObject.FindObjectOfType<Cookies>();
+        _collectables = FindObjectOfType<Collectables>();
         cookieUp = transform.Find("CookieUp").gameObject;
         effects = GameObject.Find("Particle System");
         ps = effects.GetComponent<ParticleSystem>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
-
     }
 
-    void AnimateCookie()
+    // Update is called once per frame
+    void Update()
+    {
+        StartAnimationOfCollectable();
+    }
+
+    void StartAnimationOfCollectable()
     {
         if (!_collectable.isCookieFounded) return;
         if (doNotRepeat) return;
@@ -37,50 +44,44 @@ public class AnimationOfCookie : MonoBehaviour
         doNotRepeat = true;
         StartCoroutine(MakeCookieLargerAndSmaller());
     }
-    // Update is called once per frame
-    void Update()
-    {
-        AnimateCookie();
-    }
+    
     IEnumerator RotateAndMoveCookie()
     {
-        Vector3 aim = cookiesScript.shadowsOfCookieList[0];
-        cookiesScript.shadowsOfCookieList.Remove(cookiesScript.shadowsOfCookieList[0]);
-        Vector3 direction = aim - transform.position;
+        Vector3 aim = _collectableSymbols.SymbolsOfCollectable[0];
+        _collectableSymbols.RemoveFirstCollectableFromList();
+         Vector3 direction = aim - transform.position;
         direction.Normalize();
-        effects.GetComponent<Renderer>().sortingOrder = 6;
-        ps.Play();
 
-        while ((transform.position.x != aim.x) && (transform.position.y != aim.y))
+        while (transform.position != aim)
         {
-            if (cookiesScript.shadowsOfCookieList.Count == 0)
-            {
-                playerScript.WinGame();
-            }
-
-            effects.transform.position = transform.position;
             transform.Translate(direction * Time.deltaTime * 90);
             cookieUp.transform.Rotate(Vector3.forward * 450 * Time.deltaTime);
-
-            if (startPosOfCookie.x < aim.x)
-            {
-                if (transform.position.x > aim.x) transform.position = new Vector3(aim.x, transform.position.y);
-            }
-            if (startPosOfCookie.x > aim.x)
-            {
-                if (transform.position.x < aim.x) transform.position = new Vector3(aim.x, transform.position.y);
-            }
-            if (startPosOfCookie.y < aim.y)
-            {
-                if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);
-            }
-            if (startPosOfCookie.y > aim.y)
-            {
-                if (transform.position.y < aim.y) transform.position = new Vector3(transform.position.x, aim.y);
-            }
+            CallibratePosition(aim);
             yield return new WaitForEndOfFrame();
         }
+        StartParticleEffect();
     }
+
+    void CallibratePosition(Vector3 aim)
+    {
+        if (startPosOfCollectable.x < aim.x)
+        {
+            if (transform.position.x > aim.x) transform.position = new Vector3(aim.x, transform.position.y);
+        }
+        if (startPosOfCollectable.x > aim.x)
+        {
+            if (transform.position.x < aim.x) transform.position = new Vector3(aim.x, transform.position.y);
+        }
+        if (startPosOfCollectable.y < aim.y)
+        {
+            if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);
+        }
+        if (startPosOfCollectable.y > aim.y)
+        {
+            if (transform.position.y < aim.y) transform.position = new Vector3(transform.position.x, aim.y);
+        }
+    }
+
     IEnumerator MakeCookieLargerAndSmaller()
     {
         Vector3 startScale = transform.localScale;
@@ -95,5 +96,12 @@ public class AnimationOfCookie : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         StartCoroutine(RotateAndMoveCookie());
+    }
+
+    void StartParticleEffect()
+    {
+        effects.transform.position = transform.position;
+        effects.GetComponent<Renderer>().sortingOrder = 12;
+        ps.Play();
     }
 }

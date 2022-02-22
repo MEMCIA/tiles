@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] Tilemap tilemap;
     CircleCollider2D cc;
     public Vector3 StartPlayerPos;
+    [SerializeField] CollectableSymbols _collectableSymbols;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         LoseGame();
+        WinGame();
     }
 
     void SetStartPositionOfPlayer()
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
 
     public void WinGame()
     {
+        if (_collectableSymbols.SymbolsOfCollectable.Count != 0) return;
         if (dead) return;
         text.color = Color.green;
         text.text = "W I N";

@@ -2,46 +2,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Cookies : MonoBehaviour
+public class Collectables : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
     [SerializeField] Ground ground;
     [SerializeField] Tilemap tilemap;
     [SerializeField] Grid grid;
-    [SerializeField] GameObject symbolOfCookiePrefab;
-    [SerializeField] GameObject startShadowOfCookie;
     [SerializeField] DestroyTiles _destroyTiles;
-    public List<Vector3> shadowsOfCookieList = new List<Vector3>();
-    int numberOfCookies = 5;
+    public int NumberOfCollectables = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        shadowsOfCookieList.Add(startShadowOfCookie.transform.position);
-        CreateSymbolOfObjectToFind();
-        CreateCookies();
+        CreateCollectables();
     }
 
-    void CreateSymbolOfObjectToFind()
-    {
-        for (int i = 1; i < numberOfCookies; i++)
-        {
-            float distanceBetweenCookies = startShadowOfCookie.GetComponent<PolygonCollider2D>().bounds.extents.x * 3 - 1;
-            Vector3 spawnPos = new Vector3(startShadowOfCookie.transform.position.x - distanceBetweenCookies * i, startShadowOfCookie.transform.position.y);
-            shadowsOfCookieList.Add(spawnPos);
-            Instantiate(symbolOfCookiePrefab, spawnPos, symbolOfCookiePrefab.transform.rotation);
-        }
-    }
-
-    void CreateCookies()
+    void CreateCollectables()
     {
         var obj = Instantiate(prefab);
-        float HalflengthOfCookie = obj.GetComponent<PolygonCollider2D>().bounds.extents.x;
-        float offset3 = HalflengthOfCookie + 0.5f;
+        float HalflengthOfCollectable = obj.GetComponent<PolygonCollider2D>().bounds.extents.x;
+        float offset3 = HalflengthOfCollectable + 0.5f;
 
-        for (int i = 0; i < numberOfCookies; i++)
+        for (int i = 0; i < NumberOfCollectables; i++)
         {
-            Vector3 spawnPoint = FindSpawnPoint(i, HalflengthOfCookie);
+            Vector3 spawnPoint = FindSpawnPoint(i, HalflengthOfCollectable);
 
             if (CheckIfSpawnPositionIsUnacceptable(spawnPoint, offset3))
             {
@@ -61,12 +45,12 @@ public class Cookies : MonoBehaviour
         return isRandomXUnacceptable && isRandomYUnacceptable;
     }
 
-    Vector3 FindSpawnPoint(int i, float HalflengthOfCookie)
+    Vector3 FindSpawnPoint(int i, float HalflengthOfCollectable)
     {
-        float offset = HalflengthOfCookie + grid.cellSize.y + 0.5f;
-        float offset2 = HalflengthOfCookie + grid.cellSize.x + 0.5f;
+        float offset = HalflengthOfCollectable + grid.cellSize.y + 0.5f;
+        float offset2 = HalflengthOfCollectable + grid.cellSize.x + 0.5f;
         float y = _destroyTiles.endPlayerGameAreaY1World - offset;
-        float lengthOfCookieArea = ground.endOfLevelWorldV3.x / numberOfCookies;
+        float lengthOfCookieArea = ground.endOfLevelWorldV3.x / NumberOfCollectables;
         float randomY = Random.Range(offset2, y / 2);
         float randomX1 = lengthOfCookieArea * i;
         float randomX2 = lengthOfCookieArea * i + lengthOfCookieArea;
@@ -74,15 +58,15 @@ public class Cookies : MonoBehaviour
 
         if (i == 0)
         {
-            randomX = Random.Range(randomX1 + offset2, randomX2 - HalflengthOfCookie * 2);
+            randomX = Random.Range(randomX1 + offset2, randomX2 - HalflengthOfCollectable * 2);
         }
         else if (i == 4)
         {
-            randomX = Random.Range(randomX1 + HalflengthOfCookie * 2, randomX2 - offset2);
+            randomX = Random.Range(randomX1 + HalflengthOfCollectable * 2, randomX2 - offset2);
         }
         else
         {
-            randomX = Random.Range(randomX1 + HalflengthOfCookie * 2, randomX2 - HalflengthOfCookie * 2);
+            randomX = Random.Range(randomX1 + HalflengthOfCollectable * 2, randomX2 - HalflengthOfCollectable * 2);
         }
 
         if (i % 2 == 0)
