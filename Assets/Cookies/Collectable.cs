@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public bool isCookieFounded = false;
+    public bool isCollectableFounded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.collider.CompareTag("TilemapGround"))
         {
-            isCookieFounded = true;
+            isCollectableFounded = true;
             Destroy(this);
         }
     }

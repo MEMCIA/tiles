@@ -8,11 +8,12 @@ public class CollectableAnimation : MonoBehaviour
     bool doNotRepeat = false;
     Collectables _collectables;
     CollectableSymbols _collectableSymbols;
-    GameObject cookieUp;
+    GameObject collectableUp;
     Vector3 startPosOfCollectable;
     ParticleSystem ps;
     GameObject effects;
     Player playerScript;
+    float speed = 90;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class CollectableAnimation : MonoBehaviour
         _collectable = GetComponent<Collectable>();
         rb = GetComponent<Rigidbody2D>();
         _collectables = FindObjectOfType<Collectables>();
-        cookieUp = transform.Find("CookieUp").gameObject;
+        collectableUp = transform.Find("CookieUp").gameObject;
         effects = GameObject.Find("Particle System");
         ps = effects.GetComponent<ParticleSystem>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
@@ -36,13 +37,13 @@ public class CollectableAnimation : MonoBehaviour
 
     void StartAnimationOfCollectable()
     {
-        if (!_collectable.isCookieFounded) return;
+        if (!_collectable.isCollectableFounded) return;
         if (doNotRepeat) return;
         if (playerScript.dead) return;
-        cookieUp.GetComponent<SpriteRenderer>().sortingOrder = 11;
+        collectableUp.GetComponent<SpriteRenderer>().sortingOrder = 11;
         GetComponent<SpriteRenderer>().sortingOrder = 10;
         doNotRepeat = true;
-        StartCoroutine(MakeCookieLargerAndSmaller());
+        StartCoroutine(AnimateCollectable());
     }
     
     IEnumerator RotateAndMoveCookie()
@@ -54,48 +55,28 @@ public class CollectableAnimation : MonoBehaviour
 
         while (transform.position != aim)
         {
-            transform.Translate(direction * Time.deltaTime * 90);
-            cookieUp.transform.Rotate(Vector3.forward * 450 * Time.deltaTime);
-            CallibratePosition(aim);
+            collectableUp.transform.Rotate(Vector3.forward * 450 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, aim, Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
         StartParticleEffect();
     }
 
-    void CallibratePosition(Vector3 aim)
-    {
-        if (startPosOfCollectable.x < aim.x)
-        {
-            if (transform.position.x > aim.x) transform.position = new Vector3(aim.x, transform.position.y);
-        }
-        if (startPosOfCollectable.x > aim.x)
-        {
-            if (transform.position.x < aim.x) transform.position = new Vector3(aim.x, transform.position.y);
-        }
-        if (startPosOfCollectable.y < aim.y)
-        {
-            if (transform.position.y > aim.y) transform.position = new Vector3(transform.position.x, aim.y);
-        }
-        if (startPosOfCollectable.y > aim.y)
-        {
-            if (transform.position.y < aim.y) transform.position = new Vector3(transform.position.x, aim.y);
-        }
-    }
-
-    IEnumerator MakeCookieLargerAndSmaller()
+    IEnumerator AnimateCollectable()
     {
         Vector3 startScale = transform.localScale;
-        while (transform.localScale.x < startScale.x + 1)
+        yield return AnimateScaleTo(new Vector3(transform.localScale.x+1,transform.localScale.y+1), 10);
+        yield return AnimateScaleTo(startScale, -10);
+        yield return StartCoroutine(RotateAndMoveCookie());
+    }
+
+    IEnumerator AnimateScaleTo(Vector3 targetScale, float speed)
+    {
+        while (transform.localScale != targetScale)
         {
-            transform.localScale = new Vector3(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f, transform.localScale.z);
-            yield return new WaitForSeconds(0.01f);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 10 * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
-        while (transform.localScale.x > startScale.x)
-        {
-            transform.localScale = new Vector3(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f, transform.localScale.z);
-            yield return new WaitForSeconds(0.01f);
-        }
-        StartCoroutine(RotateAndMoveCookie());
     }
 
     void StartParticleEffect()
