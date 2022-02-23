@@ -8,7 +8,8 @@ public class TilemapRowOfObstacles : MonoBehaviour
     [NonSerialized] public Vector3Int endOfLevelObstaclesTilemap;
     [SerializeField] TileBase tileBase1;
     [SerializeField] Tilemap tileMapWithObstacles;
-    [SerializeField] Ground ground;
+    [SerializeField] MainTilemap _mainTilemap;
+
     private void Awake()
     {
            
@@ -17,8 +18,8 @@ public class TilemapRowOfObstacles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        heightOfLevelObstaclesTilemap = tileMapWithObstacles.WorldToCell(ground.endOfLevelWorldTPosition).y;
-        endOfLevelObstaclesTilemap = tileMapWithObstacles.WorldToCell(ground.endOfLevelWorldTPosition);
+        heightOfLevelObstaclesTilemap = tileMapWithObstacles.WorldToCell(_mainTilemap.endOfLevelWorldTPosition).y;
+        endOfLevelObstaclesTilemap = tileMapWithObstacles.WorldToCell(_mainTilemap.endOfLevelWorldTPosition);
         CreateRowOfObstacles();
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 public class RedTilesDanger : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Ground ground;
+    public MainTilemap _mainTilemap;
     public TileBase tilebase;
     [SerializeField] FallingDownObstacles1 _fallingDownObstacles1Script;
     bool danger1Showed = false;
@@ -27,7 +27,7 @@ public class RedTilesDanger : MonoBehaviour
         if (_fallingDownObstacles1Script.AreBoxesFalling)
         {
             if (danger1Showed) return;
-            StartCoroutine(MakeTilesRed(ground.blueUpTiles, ground.blue1));
+            StartCoroutine(MakeTilesRed(_mainTilemap.blueUpTiles, _mainTilemap.blue1));
             danger1Showed = true;
         }
     }
@@ -35,9 +35,9 @@ public class RedTilesDanger : MonoBehaviour
     IEnumerator SetChangedColor(Color32 colorUp, Color32 colorDown)
     {
         yield return new WaitForSeconds(0.15f);
-        for (int x = 0; x < ground.width; x++)
+        for (int x = 0; x < _mainTilemap.width; x++)
         {
-            for (int y = 0; y < ground.height; y++)
+            for (int y = 0; y < _mainTilemap.height; y++)
             {
                 if (!tilemap.ContainsTile(tilebase)) continue;
 
@@ -52,9 +52,9 @@ public class RedTilesDanger : MonoBehaviour
         byte b = 255;
         while (g > 0)
         {
-            for (int i = 0; i < ground.height; i++)
+            for (int i = 0; i < _mainTilemap.height; i++)
             {
-                for (int j = 0; j < ground.width; j++)
+                for (int j = 0; j < _mainTilemap.width; j++)
                 {
                     if (!tilemap.ContainsTile(tilebase)) continue;
                     tilemap.SetColor(new Vector3Int(j, i, 0), new Color32(255, g, b, 255));
@@ -81,9 +81,9 @@ public class RedTilesDanger : MonoBehaviour
             g += 5;
             b += 5;
 
-            for (int i = 0; i < ground.height; i++)
+            for (int i = 0; i < _mainTilemap.height; i++)
             {
-                for (int j = 0; j < ground.width; j++)
+                for (int j = 0; j < _mainTilemap.width; j++)
                 {
                     if (!tilemap.ContainsTile(tilebase)) continue;
                     Color32 color = FindColor(j, i, colorUp, colorDown);
@@ -101,7 +101,7 @@ public class RedTilesDanger : MonoBehaviour
         Color32 originalColor = new Color32(255, 255, 255, 255);
         Color32 foundColor;
 
-        if (y >= ground.endOfLevelGroundTilemap.y)
+        if (y >= _mainTilemap.endOfLevelGroundTilemap.y)
         {
             foundColor = colorUp;
         }

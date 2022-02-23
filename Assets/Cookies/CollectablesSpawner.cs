@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 public class CollectablesSpawner : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
-    [SerializeField] Ground ground;
+    [SerializeField] MainTilemap _mainTilemap;
     [SerializeField] Tilemap tilemap;
     [SerializeField] Grid grid;
     [SerializeField] DestroyTiles _destroyTiles;
@@ -38,8 +38,8 @@ public class CollectablesSpawner : MonoBehaviour
 
     bool CheckIfSpawnPositionIsUnacceptable(Vector3 spawnPoint, float offset3)
     {
-        Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.startXSpaceForPlayer, ground.startYSpaceForPlayer, 0));
-        Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(ground.endXSpaceForPlayer, ground.endYSpaceForPlayer, 0));
+        Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(_mainTilemap.startXSpaceForPlayer, _mainTilemap.startYSpaceForPlayer, 0));
+        Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(_mainTilemap.endXSpaceForPlayer, _mainTilemap.endYSpaceForPlayer, 0));
         bool isRandomXUnacceptable = ((spawnPoint.x >= startPosSpaceForPlayerWorld.x - offset3) && (spawnPoint.x <= endPosForPlayerWorld.x + offset3));
         bool isRandomYUnacceptable = ((spawnPoint.y >= startPosSpaceForPlayerWorld.y - offset3) && (spawnPoint.y <= endPosForPlayerWorld.y + offset3));
         return isRandomXUnacceptable && isRandomYUnacceptable;
@@ -50,7 +50,7 @@ public class CollectablesSpawner : MonoBehaviour
         float offset = HalflengthOfCollectable + grid.cellSize.y + 0.5f;
         float offset2 = HalflengthOfCollectable + grid.cellSize.x + 0.5f;
         float y = _destroyTiles.endPlayerGameAreaY1World - offset;
-        float lengthOfCookieArea = ground.endOfLevelWorldV3.x / NumberOfCollectables;
+        float lengthOfCookieArea = _mainTilemap.endOfLevelWorldV3.x / NumberOfCollectables;
         float randomY = Random.Range(offset2, y / 2);
         float randomX1 = lengthOfCookieArea * i;
         float randomX2 = lengthOfCookieArea * i + lengthOfCookieArea;

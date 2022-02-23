@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 40110858}
   - component: {fileID: 40110859}
   - component: {fileID: 40110857}
+  - component: {fileID: 40110860}
   m_Layer: 8
   m_Name: Tilemap1
   m_TagString: TilemapGround
@@ -820,9 +821,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 40110856}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
   tilebase: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
   _fallingDownObstacles1Script: {fileID: 796544936}
+--- !u!114 &40110860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40110853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcb190db33f5a4428b8a5ca528adcf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 25
+  height: 15
+  groundTile: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
+  upTile: {fileID: 11400000, guid: a93dcc38036179d4eb4ccb29dc07aaca, type: 2}
+  groundTileMap: {fileID: 40110856}
+  endOfLevelWorldT: {fileID: 1858724627}
 --- !u!1 &70200387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startCollectableShadow: {fileID: 154797174}
   _symbolOfCollectablePrefab: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
-  _collectables: {fileID: 1026899502}
+  _collectablesSpawner: {fileID: 1026899502}
   SymbolsOfCollectable: []
 --- !u!1 &171740498
 GameObject:
@@ -3839,9 +3858,7 @@ MonoBehaviour:
   height: 15
   groundTile: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
   upTile: {fileID: 11400000, guid: a93dcc38036179d4eb4ccb29dc07aaca, type: 2}
-  backGroundTile: {fileID: 11400000, guid: cf663002aa757fb4285ecc99c7926f10, type: 2}
   groundTileMap: {fileID: 40110856}
-  backgroundTilemap: {fileID: 837429193}
   endOfLevelWorldT: {fileID: 1858724627}
 --- !u!4 &534812629
 Transform:
@@ -4768,7 +4785,7 @@ MonoBehaviour:
   dead: 0
   text: {fileID: 2021963258}
   StartPosOfCirlce: {x: 0, y: 0, z: 0}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
   tilemap: {fileID: 40110856}
   StartPlayerPos: {x: 0, y: 0, z: 0}
   _collectableSymbols: {fileID: 154797178}
@@ -6283,7 +6300,7 @@ MonoBehaviour:
   prefab2: {fileID: 7373305483686014291, guid: 88b36f298e07a3b449ae63c1dbaa6d11, type: 3}
   tilemapWithObstacles: {fileID: 1439200098}
   player: {fileID: 592346103}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
   _tilemapRowOfObstacles: {fileID: 1439200099}
   AreBoxesFalling: 0
 --- !u!4 &796544937
@@ -6816,6 +6833,7 @@ GameObject:
   - component: {fileID: 837429191}
   - component: {fileID: 837429193}
   - component: {fileID: 837429192}
+  - component: {fileID: 837429194}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -6925,6 +6943,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &837429194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837429190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c02c157c73b1844babafd67017bb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backgroundTilemap: {fileID: 837429193}
+  _backGroundTile: {fileID: 11400000, guid: cf663002aa757fb4285ecc99c7926f10, type: 2}
+  _mainTilemap: {fileID: 40110860}
 --- !u!1 &840554849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7711,7 +7744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3468772213363478027, guid: d92b7f702c966424c9aa12271f147f1c, type: 3}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
   tilemap: {fileID: 40110856}
   grid: {fileID: 2104446322}
   _destroyTiles: {fileID: 40110858}
@@ -10663,7 +10696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileBase1: {fileID: 11400000, guid: e0f1648661ca4e44db5209f05b45fa74, type: 2}
   tileMapWithObstacles: {fileID: 1439200098}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
 --- !u!1 &1443948330
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Ground : MonoBehaviour
+public class MainTilemap : MonoBehaviour
 {
     public int width, height;
-    [SerializeField] TileBase groundTile, upTile, backGroundTile;
-    [SerializeField] Tilemap groundTileMap, backgroundTilemap;
+    [SerializeField] TileBase groundTile, upTile;
+    [SerializeField] Tilemap groundTileMap;
     [System.NonSerialized] public float heightOfLevelWorld;
     [System.NonSerialized] public int heightOfLevelGroundTilemap;
     [System.NonSerialized] public Vector3 endOfLevelWorldTPosition;
@@ -25,8 +25,6 @@ public class Ground : MonoBehaviour
     [System.NonSerialized] public Color32 naturalColor = new Color32(255, 255, 255, 255);
     [System.NonSerialized] public Color32 blue1 = new Color32(177, 248, 248, 255);
     [System.NonSerialized] public Color32 blueUpTiles = new Color32(157, 188, 246, 255);
-    [System.NonSerialized] public Color32 yellow2 = new Color32(255, 255, 255, 180);
-
 
     private void Awake()
     {
@@ -37,7 +35,6 @@ public class Ground : MonoBehaviour
         endOfLevelWorldV3 = endOfLevelWorldTPosition;
         RenderTilemap();
         CreateSpaceForPlayer();
-        RenderBackgroundMap();
     }
 
     // Start is called before the first frame update
@@ -76,43 +73,11 @@ public class Ground : MonoBehaviour
                     groundTileMap.SetTile(new Vector3Int(x, y, 0), upTile);
                     groundTileMap.SetColor(new Vector3Int(x, y, 0), blueUpTiles);
                 }
-                ChangeColor(x, y, groundTileMap, blue1);
+                TilemapUtils.ChangeColor(x, y, groundTileMap, blue1);
             }
         }
     }
-
-    void RenderBackgroundMap()
-    {
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                backgroundTilemap.SetTile(new Vector3Int(x, y, 0), backGroundTile);
-                backgroundTilemap.SetColor(new Vector3Int(x, y, 0), yellow2);
-                ChangeColor(x, y, backgroundTilemap, naturalColor);
-            }
-        }
-    }
-
-    public void ChangeColor(int x, int y, Tilemap tilemap, Color32 color)
-    {
-
-        if (y % 2 == 0)
-        {
-            if (x % 2 == 0)
-            {
-                tilemap.SetColor(new Vector3Int(x, y, 0), color);
-            }
-        }
-        else
-        {
-            if (x % 2 != 0)
-            {
-                tilemap.SetColor(new Vector3Int(x, y, 0), color);
-            }
-
-        }
-
-    }
+    
+   
 }
 

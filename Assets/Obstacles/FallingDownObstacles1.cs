@@ -8,7 +8,7 @@ public class FallingDownObstacles1 : MonoBehaviour
     [SerializeField] GameObject prefab2;
     [SerializeField] Tilemap tilemapWithObstacles;
     [SerializeField] GameObject player;
-    [SerializeField] Ground ground;
+    [SerializeField] MainTilemap _mainTilemap;
     [SerializeField] TilemapRowOfObstacles _tilemapRowOfObstacles;
     MovePlayer movePlayer;
     Player playerScript;

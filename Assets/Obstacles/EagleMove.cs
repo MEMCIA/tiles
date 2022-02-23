@@ -9,7 +9,7 @@ public class EagleMove : MonoBehaviour
     [SerializeField] bool isPointOfStart3;
     [SerializeField] int directionOfMovement = 1;
     [SerializeField] Tilemap tilemap;
-    Ground groundScript;
+    MainTilemap _mainTilemap;
     SpriteRenderer spriteRenderer;
     int leftEdge = 0;
     float rightEdge;
@@ -17,8 +17,8 @@ public class EagleMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        groundScript = groundObject.GetComponent<Ground>();
-        rightEdge = tilemap.CellToWorld(new Vector3Int(groundScript.width, 0, 0)).x;
+        _mainTilemap = groundObject.GetComponent<MainTilemap>();
+        rightEdge = tilemap.CellToWorld(new Vector3Int(_mainTilemap.width, 0, 0)).x;
         spriteRenderer = GetComponent<SpriteRenderer>();
         FindStartPosition();
     }
