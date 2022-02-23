@@ -6,7 +6,7 @@ public class CollectableAnimation : MonoBehaviour
     Collectable _collectable;
     Rigidbody2D rb;
     bool doNotRepeat = false;
-    Collectables _collectables;
+    CollectablesSpawner _collectablesSpawner;
     CollectableSymbols _collectableSymbols;
     GameObject collectableUp;
     Vector3 startPosOfCollectable;
@@ -22,7 +22,7 @@ public class CollectableAnimation : MonoBehaviour
         startPosOfCollectable = transform.position;
         _collectable = GetComponent<Collectable>();
         rb = GetComponent<Rigidbody2D>();
-        _collectables = FindObjectOfType<Collectables>();
+        _collectablesSpawner = FindObjectOfType<CollectablesSpawner>();
         collectableUp = transform.Find("CookieUp").gameObject;
         effects = GameObject.Find("Particle System");
         ps = effects.GetComponent<ParticleSystem>();

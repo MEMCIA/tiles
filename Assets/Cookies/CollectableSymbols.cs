@@ -6,7 +6,7 @@ public class CollectableSymbols : MonoBehaviour
 {
     [SerializeField] GameObject _startCollectableShadow;
     [SerializeField] GameObject _symbolOfCollectablePrefab;
-    [SerializeField] Collectables _collectables;
+    [SerializeField] CollectablesSpawner _collectablesSpawner;
     public List<Vector3> SymbolsOfCollectable = new List<Vector3>();
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class CollectableSymbols : MonoBehaviour
 
     void CreateCollectableSymbols()
     {
-        for (int i = 1; i < _collectables.NumberOfCollectables; i++)
+        for (int i = 1; i < _collectablesSpawner.NumberOfCollectables; i++)
         {
             float distanceBetweenCookies = _startCollectableShadow.GetComponent<PolygonCollider2D>().bounds.extents.x * 3 - 1;
             Vector3 spawnPos = new Vector3(_startCollectableShadow.transform.position.x - distanceBetweenCookies * i, _startCollectableShadow.transform.position.y);
