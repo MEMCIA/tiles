@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DestroyOutOfBounds : MonoBehaviour
+public class DestroyOutOfBound : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     {
         Destroy();
     }
+
    void  Destroy()
     {
         if (transform.position.y <= 0)

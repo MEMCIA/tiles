@@ -7,7 +7,6 @@ public class MainTilemap : MonoBehaviour
     public int width, height;
     [SerializeField] TileBase groundTile, upTile;
     [SerializeField] Tilemap groundTileMap;
-    [System.NonSerialized] public float heightOfLevelWorld;
     [System.NonSerialized] public int heightOfLevelGroundTilemap;
     [System.NonSerialized] public Vector3 endOfLevelWorldTPosition;
     public Transform endOfLevelWorldT;
@@ -21,6 +20,10 @@ public class MainTilemap : MonoBehaviour
     [System.NonSerialized] public int endYSpaceForPlayer = 5;
     [System.NonSerialized] public List<Vector3> listSpaceForPlayerPositionsWorld = new List<Vector3>();
 
+    //game area Y up
+    [System.NonSerialized] public float EndPlayerGameAreaYWorld;
+    [System.NonSerialized] public int OffsetYGameAreaUp = -2;
+
     //colors
     [System.NonSerialized] public Color32 naturalColor = new Color32(255, 255, 255, 255);
     [System.NonSerialized] public Color32 blue1 = new Color32(177, 248, 248, 255);
@@ -29,10 +32,10 @@ public class MainTilemap : MonoBehaviour
     private void Awake()
     {
         endOfLevelWorldTPosition = endOfLevelWorldT.position;
-        heightOfLevelWorld = endOfLevelWorldTPosition.y;
         heightOfLevelGroundTilemap = groundTileMap.WorldToCell(endOfLevelWorldTPosition).y;
         endOfLevelGroundTilemap = groundTileMap.WorldToCell(endOfLevelWorldTPosition);
         endOfLevelWorldV3 = endOfLevelWorldTPosition;
+        EndPlayerGameAreaYWorld = groundTileMap.CellToWorld(new Vector3Int(0, heightOfLevelGroundTilemap + OffsetYGameAreaUp, 0)).y;
         RenderTilemap();
         CreateSpaceForPlayer();
     }
@@ -49,6 +52,7 @@ public class MainTilemap : MonoBehaviour
     {
 
     }
+
     void CreateSpaceForPlayer()
     {
         for (int i = startXSpaceForPlayer; i < endXSpaceForPlayer; i++)

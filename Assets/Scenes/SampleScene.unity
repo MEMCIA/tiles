@@ -807,7 +807,6 @@ MonoBehaviour:
   player: {fileID: 592346103}
   ground: {fileID: 534812627}
   playerScript: {fileID: 592346109}
-  endPlayerGameAreaY1World: 0
 --- !u!114 &40110859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,10 +819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f361cb58162124186464c1d34ca11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 40110856}
+  _tilemap: {fileID: 40110856}
   _mainTilemap: {fileID: 40110860}
-  tilebase: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
-  _fallingDownObstacles1Script: {fileID: 796544936}
+  _tilebase: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
+  _fallingBoxesSpawner: {fileID: 796544936}
 --- !u!114 &40110860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6296,9 +6295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80af529c7c00af44ab6c973d7ecfc984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 693304096703727632, guid: 89907ea67d612db4a919fbf40bfeb2ae, type: 3}
-  prefab2: {fileID: 7373305483686014291, guid: 88b36f298e07a3b449ae63c1dbaa6d11, type: 3}
-  tilemapWithObstacles: {fileID: 1439200098}
+  _prefab: {fileID: 693304096703727632, guid: 89907ea67d612db4a919fbf40bfeb2ae, type: 3}
+  _prefab2: {fileID: 7373305483686014291, guid: 88b36f298e07a3b449ae63c1dbaa6d11, type: 3}
+  _tileMapWithObstacles: {fileID: 1439200098}
   player: {fileID: 592346103}
   _mainTilemap: {fileID: 40110860}
   _tilemapRowOfObstacles: {fileID: 1439200099}
@@ -10694,8 +10693,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28a17768f8bf7a49890fb5b986747ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileBase1: {fileID: 11400000, guid: e0f1648661ca4e44db5209f05b45fa74, type: 2}
-  tileMapWithObstacles: {fileID: 1439200098}
+  _tileBase: {fileID: 11400000, guid: e0f1648661ca4e44db5209f05b45fa74, type: 2}
+  _tileMapWithObstacles: {fileID: 1439200098}
   _mainTilemap: {fileID: 40110860}
 --- !u!1 &1443948330
 GameObject:

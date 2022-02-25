@@ -49,7 +49,7 @@ public class CollectablesSpawner : MonoBehaviour
     {
         float offset = HalflengthOfCollectable + grid.cellSize.y + 0.5f;
         float offset2 = HalflengthOfCollectable + grid.cellSize.x + 0.5f;
-        float y = _destroyTiles.endPlayerGameAreaY1World - offset;
+        float y = _mainTilemap.EndPlayerGameAreaYWorld - offset;
         float lengthOfCookieArea = _mainTilemap.endOfLevelWorldV3.x / NumberOfCollectables;
         float randomY = Random.Range(offset2, y / 2);
         float randomX1 = lengthOfCookieArea * i;

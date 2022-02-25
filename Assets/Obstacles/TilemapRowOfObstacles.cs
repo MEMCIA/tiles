@@ -4,10 +4,10 @@ using System;
 
 public class TilemapRowOfObstacles : MonoBehaviour
 {
-    [NonSerialized] public int heightOfLevelObstaclesTilemap;
-    [NonSerialized] public Vector3Int endOfLevelObstaclesTilemap;
-    [SerializeField] TileBase tileBase1;
-    [SerializeField] Tilemap tileMapWithObstacles;
+    [NonSerialized] public int HeightOfLevelObstaclesTilemap;
+    [NonSerialized] public Vector3Int EndOfLevelObstaclesTilemap;
+    [SerializeField] TileBase _tileBase;
+    [SerializeField] Tilemap _tileMapWithObstacles;
     [SerializeField] MainTilemap _mainTilemap;
 
     private void Awake()
@@ -18,8 +18,8 @@ public class TilemapRowOfObstacles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        heightOfLevelObstaclesTilemap = tileMapWithObstacles.WorldToCell(_mainTilemap.endOfLevelWorldTPosition).y;
-        endOfLevelObstaclesTilemap = tileMapWithObstacles.WorldToCell(_mainTilemap.endOfLevelWorldTPosition);
+        HeightOfLevelObstaclesTilemap = _tileMapWithObstacles.WorldToCell(_mainTilemap.endOfLevelWorldTPosition).y;
+        EndOfLevelObstaclesTilemap = _tileMapWithObstacles.WorldToCell(_mainTilemap.endOfLevelWorldTPosition);
         CreateRowOfObstacles();
     }
 
@@ -31,9 +31,9 @@ public class TilemapRowOfObstacles : MonoBehaviour
 
     void CreateRowOfObstacles()
     {
-        for (int i = 0; i < endOfLevelObstaclesTilemap.x + 1; i++)
+        for (int i = 0; i < EndOfLevelObstaclesTilemap.x + 1; i++)
         {
-            tileMapWithObstacles.SetTile(new Vector3Int(i, endOfLevelObstaclesTilemap.y, 0), tileBase1);
+            _tileMapWithObstacles.SetTile(new Vector3Int(i, EndOfLevelObstaclesTilemap.y, 0), _tileBase);
         }
 
     }

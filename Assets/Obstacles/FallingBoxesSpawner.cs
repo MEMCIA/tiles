@@ -2,17 +2,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class FallingDownObstacles1 : MonoBehaviour
+public class FallingBoxesSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject prefab;
-    [SerializeField] GameObject prefab2;
-    [SerializeField] Tilemap tilemapWithObstacles;
+    [SerializeField] GameObject _prefab;
+    [SerializeField] GameObject _prefab2;
+    [SerializeField] Tilemap _tileMapWithObstacles;
     [SerializeField] GameObject player;
     [SerializeField] MainTilemap _mainTilemap;
     [SerializeField] TilemapRowOfObstacles _tilemapRowOfObstacles;
     MovePlayer movePlayer;
     Player playerScript;
     public bool AreBoxesFalling = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,16 +37,16 @@ public class FallingDownObstacles1 : MonoBehaviour
 
     List<Vector3> CreateSpawnPositions()
     {
-        int x1 = Mathf.FloorToInt(_tilemapRowOfObstacles.endOfLevelObstaclesTilemap.x / 3);
-        int x2 = x1 * 2;
-        int x3 = _tilemapRowOfObstacles.endOfLevelObstaclesTilemap.x;
+        int x = 0;
+        int length = Mathf.FloorToInt(_tilemapRowOfObstacles.EndOfLevelObstaclesTilemap.x / 3);
         List<Vector3> spawnPositions = new List<Vector3>();
-        Vector3Int vectorCell1 = new Vector3Int(Random.Range(0, x1), _tilemapRowOfObstacles.heightOfLevelObstaclesTilemap,0);
-        Vector3Int vectorCell2 = new Vector3Int(Random.Range(x1, x2), _tilemapRowOfObstacles.heightOfLevelObstaclesTilemap, 0);
-        Vector3Int vectorCell3 = new Vector3Int(Random.Range(x2, x3), _tilemapRowOfObstacles.heightOfLevelObstaclesTilemap, 0);
-        spawnPositions.Add(tilemapWithObstacles.CellToWorld(vectorCell1));   
-        spawnPositions.Add(tilemapWithObstacles.CellToWorld(vectorCell2));  
-        spawnPositions.Add(tilemapWithObstacles.CellToWorld(vectorCell3));
+
+        for (int i = 0; i < 3; i++)
+        {
+            Vector3Int vectorCell1 = new Vector3Int(Random.Range(x, x+length), _tilemapRowOfObstacles.HeightOfLevelObstaclesTilemap, 0);
+            spawnPositions.Add(_tileMapWithObstacles.CellToWorld(vectorCell1));
+            x += length;
+        }
         return spawnPositions;
     }
 
@@ -54,17 +55,15 @@ public class FallingDownObstacles1 : MonoBehaviour
         if (playerScript.win) return;
         if (playerScript.dead) return;
         List<Vector3> spawnPositions = CreateSpawnPositions();
-        GameObject prefabToUse = prefab;
+        GameObject prefabToUse = _prefab;
 
         if (Random.Range(0, 2) == 1)
         {
-            prefabToUse = prefab2;
+            prefabToUse = _prefab2;
         }
         foreach (var item in spawnPositions)
         {
-            Instantiate(prefabToUse, item, prefab.transform.rotation);
+            Instantiate(prefabToUse, item, prefabToUse.transform.rotation);
         }
-
     }
-
 }
