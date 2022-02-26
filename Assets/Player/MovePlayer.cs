@@ -6,6 +6,8 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] Player playerScript;
     Rigidbody2D rb;
     [SerializeField] float speed = 100;
+    float horizontalInput;
+    float verticalInput;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +25,14 @@ public class MovePlayer : MonoBehaviour
     {
         if (playerScript.Life <= 0) return;
         if (playerScript.win) return;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
         rb.AddForce(Vector3.right * horizontalInput * speed * Time.fixedDeltaTime);
         rb.AddForce(Vector3.up * verticalInput * speed * Time.fixedDeltaTime);
+    }
+
+    public Vector3Int GetDirectionOfPlayer()
+    {
+        return new Vector3Int(Mathf.CeilToInt(horizontalInput), Mathf.CeilToInt(verticalInput), 0);
     }
 }

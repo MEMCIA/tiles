@@ -5,6 +5,7 @@ public class CatPlayerAnimation : MonoBehaviour
 {
     [SerializeField] GameObject player;
     public Vector3 offsetBetweenCatAndCirlce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,5 @@ public class CatPlayerAnimation : MonoBehaviour
         transform.position = player.transform.position + offsetBetweenCatAndCirlce;
         transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z * 0.5f, player.transform.rotation.w);
         yield return new WaitForEndOfFrame();
-        Debug.Log(player.transform.rotation.z);
     }
 }

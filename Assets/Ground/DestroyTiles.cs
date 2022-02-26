@@ -10,6 +10,8 @@ public class DestroyTiles : MonoBehaviour
     MainTilemap _mainTilemap;
     Vector3Int direction;
     [SerializeField] Player playerScript;
+    CircleCollider2D _circleCollider;
+    [SerializeField] MovePlayer _movePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class DestroyTiles : MonoBehaviour
         _mainTilemap = ground.GetComponent<MainTilemap>();   
         tilemap = GetComponent<Tilemap>();
         rbPlayer = player.GetComponent<Rigidbody2D>();
+        _circleCollider = player.GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -27,7 +30,7 @@ public class DestroyTiles : MonoBehaviour
 
     void Destroy()
     {
-        if (playerScript.Life <= 0) return;
+        if (playerScript.IsDead()) return;
         DestroyTileWhenVelocityIsMoreThan0();
         DestroyTileWhenVelocityIs0();
     }
@@ -35,9 +38,17 @@ public class DestroyTiles : MonoBehaviour
     void DestroyTile(Vector3 offset)
     {
         Vector3Int checkPosition = tilemap.WorldToCell(player.transform.position + offset);
-
-        if (checkPosition.x == 0 || checkPosition.y == 0 || checkPosition.x == _mainTilemap.width - 1 || checkPosition.y >= _mainTilemap.heightOfLevelGroundTilemap + _mainTilemap.OffsetYGameAreaUp) return;
+        if(!IsTilePositionValid(checkPosition))return;
         tilemap.SetTile(new Vector3Int(Mathf.CeilToInt(checkPosition.x), Mathf.CeilToInt(checkPosition.y), 0), null);
+    }
+
+    bool IsTilePositionValid(Vector3Int checkPosition)
+    {
+        if (checkPosition.x == 0) return false;
+        if(checkPosition.y == 0) return false;
+        if (checkPosition.x == _mainTilemap.width - 1) return false;
+        if (checkPosition.y >= _mainTilemap.heightOfLevelGroundTilemap + _mainTilemap.OffsetYGameAreaUp) return false;
+        return true;
     }
 
     void DestroyTileWhenVelocityIsMoreThan0()
@@ -48,17 +59,9 @@ public class DestroyTiles : MonoBehaviour
 
     void DestroyTileWhenVelocityIs0()
     {
-        GetDirectionOfPlayer();
-        CircleCollider2D cc = player.GetComponent<CircleCollider2D>();
-        float distance = cc.radius + 1.2f;
+        direction = _movePlayer.GetDirectionOfPlayer();
+        float distance = _circleCollider.radius + 1.2f;
         Vector3 offset = new Vector3(direction.x * distance, direction.y * distance);
         DestroyTile(offset);
-    }
-
-    void GetDirectionOfPlayer()
-    {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        direction = new Vector3Int(Mathf.CeilToInt(horizontal), Mathf.CeilToInt(vertical), 0);
     }
 }

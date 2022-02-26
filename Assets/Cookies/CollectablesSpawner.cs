@@ -47,31 +47,22 @@ public class CollectablesSpawner : MonoBehaviour
 
     Vector3 FindSpawnPoint(int i, float HalflengthOfCollectable)
     {
-        float offset = HalflengthOfCollectable + grid.cellSize.y + 0.5f;
-        float offset2 = HalflengthOfCollectable + grid.cellSize.x + 0.5f;
-        float y = _mainTilemap.EndPlayerGameAreaYWorld - offset;
-        float lengthOfCookieArea = _mainTilemap.endOfLevelWorldV3.x / NumberOfCollectables;
-        float randomY = Random.Range(offset2, y / 2);
-        float randomX1 = lengthOfCookieArea * i;
-        float randomX2 = lengthOfCookieArea * i + lengthOfCookieArea;
-        float randomX;
+        float offsetX = HalflengthOfCollectable + grid.cellSize.x + 0.5f;
+        float lengthX = (_mainTilemap.endOfLevelWorldV3.x - 2*offsetX)/ NumberOfCollectables;
+        float x = offsetX + lengthX*i;
+        float randomX = Random.Range(x + HalflengthOfCollectable * 2, x+lengthX - HalflengthOfCollectable * 2);
 
-        if (i == 0)
-        {
-            randomX = Random.Range(randomX1 + offset2, randomX2 - HalflengthOfCollectable * 2);
-        }
-        else if (i == 4)
-        {
-            randomX = Random.Range(randomX1 + HalflengthOfCollectable * 2, randomX2 - offset2);
-        }
-        else
-        {
-            randomX = Random.Range(randomX1 + HalflengthOfCollectable * 2, randomX2 - HalflengthOfCollectable * 2);
-        }
+        float offsetY = HalflengthOfCollectable + grid.cellSize.y + 0.5f;
+        float lengthY = (_mainTilemap.EndPlayerGameAreaYWorld - offsetY*2)/2;
+        float randomY;
 
         if (i % 2 == 0)
         {
-            randomY = Random.Range(y / 2 + 1, y);
+            randomY = Random.Range(lengthY + offsetY + HalflengthOfCollectable, offsetY + 2 * lengthY);
+        }
+        else
+        {
+            randomY = Random.Range(offsetY, lengthY + offsetY - HalflengthOfCollectable);
         }
         return new Vector3(randomX, randomY);
     }

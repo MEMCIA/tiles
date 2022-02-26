@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Paw : MonoBehaviour
 {
-    public int Degrees = 360;
     public int Number;
     public bool MovementEnded = false;
 
@@ -21,10 +20,13 @@ public class Paw : MonoBehaviour
 
     public IEnumerator RotatePaw()
     {
+        int rotation = 230;
         float z = 0;
-        while (z < Degrees)
+        int degreesAdded = 170;
+
+        while (z < rotation)
         {
-            z += 170f * Time.deltaTime;
+            z += degreesAdded * Time.deltaTime;
             transform.eulerAngles = new Vector3(0, 0, z);
             yield return new WaitForEndOfFrame();
         }

@@ -65,4 +65,10 @@ public class Player : MonoBehaviour
             dead = true;
         }
     }
+
+    public bool IsDead()
+    {
+        if (dead) return true;
+        return false;
+    }
 }

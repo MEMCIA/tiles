@@ -807,6 +807,7 @@ MonoBehaviour:
   player: {fileID: 592346103}
   ground: {fileID: 534812627}
   playerScript: {fileID: 592346109}
+  _movePlayer: {fileID: 592346106}
 --- !u!114 &40110859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2918,7 +2919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbef782d7659e824ca06f5019ed25d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Degrees: 230
   Number: 0
   MovementEnded: 0
   _paw: {fileID: 9075166617535975742, guid: 5219794aa9aef2845bf8dd48089c2c7c, type: 3}
