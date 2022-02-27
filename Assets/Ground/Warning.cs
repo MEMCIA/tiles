@@ -19,17 +19,16 @@ public class Warning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShowWarning(); 
+        ShowWarning();
     }
 
     void ShowWarning()
     {
-        if (_fallingBoxesSpawner.AreBoxesFalling)
-        {
-            if (_danger1Showed) return;
-            StartCoroutine(MakeTilesRed(_mainTilemap.blueUpTiles, _mainTilemap.blue1));
-            _danger1Showed = true;
-        }
+        if (!_fallingBoxesSpawner.AreBoxesFalling) return;
+        if (_danger1Showed) return;
+        StartCoroutine(MakeTilesRed(_mainTilemap.blueUpTiles, _mainTilemap.blue1));
+        _danger1Showed = true;
+
     }
 
     IEnumerator SetChangedColor(Color32 colorUp, Color32 colorDown)
@@ -64,7 +63,7 @@ public class Warning : MonoBehaviour
             b -= 5;
             yield return new WaitForSeconds(0.005f);
         }
-        StartCoroutine(SetChangedColor(colorUp, colorDown));
+        yield return (SetChangedColor(colorUp, colorDown));
     }
 
     Color32 FindColor(int x, int y, Color32 colorUp, Color32 colorDown)

@@ -52,8 +52,8 @@ public class FallingBoxesSpawner : MonoBehaviour
 
     void SpawnFallingDownObstacles()
     {
-        if (playerScript.win) return;
-        if (playerScript.dead) return;
+        if (playerScript.Win) return;
+        if (playerScript.Dead) return;
         List<Vector3> spawnPositions = CreateSpawnPositions();
         GameObject prefabToUse = _prefab;
 

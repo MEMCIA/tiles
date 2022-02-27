@@ -14,6 +14,8 @@ public class CollectableAnimation : MonoBehaviour
     GameObject effects;
     Player playerScript;
     float speed = 90;
+    [SerializeField] float _endScale = 1.0f;
+    [SerializeField] float _speedOfchangingSize = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +39,9 @@ public class CollectableAnimation : MonoBehaviour
 
     void StartAnimationOfCollectable()
     {
-        if (!_collectable.isCollectableFounded) return;
+        if (!_collectable.isCollectableFound) return;
         if (doNotRepeat) return;
-        if (playerScript.dead) return;
+        if (playerScript.Dead) return;
         collectableUp.GetComponent<SpriteRenderer>().sortingOrder = 11;
         GetComponent<SpriteRenderer>().sortingOrder = 10;
         doNotRepeat = true;
@@ -65,16 +67,16 @@ public class CollectableAnimation : MonoBehaviour
     IEnumerator AnimateCollectable()
     {
         Vector3 startScale = transform.localScale;
-        yield return AnimateScaleTo(new Vector3(transform.localScale.x+1,transform.localScale.y+1), 10);
-        yield return AnimateScaleTo(startScale, -10);
-        yield return StartCoroutine(RotateAndMoveCookie());
+        yield return AnimateScaleTo(new Vector3(transform.localScale.x+ _endScale, transform.localScale.y+ _endScale), _speedOfchangingSize);
+        yield return AnimateScaleTo(startScale, _speedOfchangingSize);
+        yield return RotateAndMoveCookie();
     }
 
     IEnumerator AnimateScaleTo(Vector3 targetScale, float speed)
     {
         while (transform.localScale != targetScale)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 10 * Time.deltaTime);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, speed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
     }

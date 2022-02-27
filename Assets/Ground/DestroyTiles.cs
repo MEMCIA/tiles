@@ -30,7 +30,7 @@ public class DestroyTiles : MonoBehaviour
 
     void Destroy()
     {
-        if (playerScript.IsDead()) return;
+        if (playerScript.Dead) return;
         DestroyTileWhenVelocityIsMoreThan0();
         DestroyTileWhenVelocityIs0();
     }

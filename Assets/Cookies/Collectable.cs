@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public bool isCollectableFounded = false;
+    public bool isCollectableFound = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.collider.CompareTag("TilemapGround"))
         {
-            isCollectableFounded = true;
+            isCollectableFound = true;
             Destroy(this);
         }
     }

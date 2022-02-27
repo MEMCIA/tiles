@@ -4780,10 +4780,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  win: 0
   dead: 0
   text: {fileID: 2021963258}
-  StartPosOfCirlce: {x: 0, y: 0, z: 0}
+  PlayerPositionBeforeStart: {x: 0, y: 0, z: 0}
   _mainTilemap: {fileID: 40110860}
   tilemap: {fileID: 40110856}
   StartPlayerPos: {x: 0, y: 0, z: 0}
@@ -5844,8 +5843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334b4088c196c7a46877a64f87aa5d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
-  player: {fileID: 592346109}
+  _prefab: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
+  _player: {fileID: 592346109}
 --- !u!1 &740996750
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,9 +24,9 @@ public class FallingBox : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            if (player.win) return;
-            player.Life--;
-            if (player.Life < 0) return;
+            if (player.Win) return;
+            if (player.Dead) return;
+            player.TakeDamage();
             paws.SelectPawToMove();
             lifeSymbols.ChangeColorOfNextSymbol();
             GetComponent<BoxCollider2D>().enabled = false;

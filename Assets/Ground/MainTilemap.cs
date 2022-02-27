@@ -36,7 +36,7 @@ public class MainTilemap : MonoBehaviour
         endOfLevelGroundTilemap = groundTileMap.WorldToCell(endOfLevelWorldTPosition);
         endOfLevelWorldV3 = endOfLevelWorldTPosition;
         EndPlayerGameAreaYWorld = groundTileMap.CellToWorld(new Vector3Int(0, heightOfLevelGroundTilemap + OffsetYGameAreaUp, 0)).y;
-        RenderTilemap();
+        CreateTilemap();
         CreateSpaceForPlayer();
     }
 
@@ -65,7 +65,7 @@ public class MainTilemap : MonoBehaviour
         }
     }
 
-    void RenderTilemap()
+    void CreateTilemap()
     {
         for (int x = 0; x < width; x++)
         {

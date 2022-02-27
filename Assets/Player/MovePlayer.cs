@@ -23,8 +23,8 @@ public class MovePlayer : MonoBehaviour
    
     void Move()
     {
-        if (playerScript.Life <= 0) return;
-        if (playerScript.win) return;
+        if (playerScript.Dead) return;
+        if (playerScript.Win) return;
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         rb.AddForce(Vector3.right * horizontalInput * speed * Time.fixedDeltaTime);

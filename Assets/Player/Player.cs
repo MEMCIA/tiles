@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int Life = 7; 
-    public List<GameObject> hearts = new List<GameObject>(7);
-    public bool win = false;
-    public bool dead = false;
+    public int Life { get; protected set; } = 7; 
+    public bool Win { get; protected set; } = false;
+    public bool Dead { get; protected set; } = false;
     [SerializeField] Text text;
-    public Vector3 StartPosOfCirlce;
+    public Vector3 PlayerPositionBeforeStart;
     [SerializeField] MainTilemap _mainTilemap;
     [SerializeField] Tilemap tilemap;
     CircleCollider2D cc;
@@ -20,8 +19,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         cc = GetComponent<CircleCollider2D>();
-        StartPosOfCirlce = transform.position;
+        PlayerPositionBeforeStart = transform.position;
     }
+
     // Start is called before the first frame update
     void Start()
     {    
@@ -50,25 +50,25 @@ public class Player : MonoBehaviour
     public void WinGame()
     {
         if (_collectableSymbols.SymbolsOfCollectable.Count != 0) return;
-        if (dead) return;
+        if (Dead) return;
         text.color = Color.green;
         text.text = "W I N";
-        win = true;
+        Win = true;
     }
    
     void LoseGame()
     {
         if (Life <= 0)
         {
-            if (win) return;
+            if (Win) return;
             text.text = "G A M E   O V E R";
-            dead = true;
+            Dead = true;
         }
     }
 
-    public bool IsDead()
+    public void TakeDamage()
     {
-        if (dead) return true;
-        return false;
+        Life--;
     }
+
 }

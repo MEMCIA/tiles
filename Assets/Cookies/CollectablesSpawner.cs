@@ -4,9 +4,9 @@ using UnityEngine.Tilemaps;
 
 public class CollectablesSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject prefab;
+    [SerializeField] GameObject _prefab;
     [SerializeField] MainTilemap _mainTilemap;
-    [SerializeField] Tilemap tilemap;
+    [SerializeField] Tilemap _tilemap;
     [SerializeField] Grid grid;
     [SerializeField] DestroyTiles _destroyTiles;
     public int NumberOfCollectables = 5;
@@ -19,7 +19,7 @@ public class CollectablesSpawner : MonoBehaviour
 
     void CreateCollectables()
     {
-        var obj = Instantiate(prefab);
+        var obj = Instantiate(_prefab);
         float HalflengthOfCollectable = obj.GetComponent<PolygonCollider2D>().bounds.extents.x;
         float offset3 = HalflengthOfCollectable + 0.5f;
 
@@ -32,14 +32,14 @@ public class CollectablesSpawner : MonoBehaviour
                 i--;
                 continue;
             }
-            Instantiate(prefab, spawnPoint, prefab.transform.rotation);
+            Instantiate(_prefab, spawnPoint, _prefab.transform.rotation);
         }
     }
 
     bool CheckIfSpawnPositionIsUnacceptable(Vector3 spawnPoint, float offset3)
     {
-        Vector3 startPosSpaceForPlayerWorld = tilemap.CellToWorld(new Vector3Int(_mainTilemap.startXSpaceForPlayer, _mainTilemap.startYSpaceForPlayer, 0));
-        Vector3 endPosForPlayerWorld = tilemap.CellToWorld(new Vector3Int(_mainTilemap.endXSpaceForPlayer, _mainTilemap.endYSpaceForPlayer, 0));
+        Vector3 startPosSpaceForPlayerWorld = _tilemap.CellToWorld(new Vector3Int(_mainTilemap.startXSpaceForPlayer, _mainTilemap.startYSpaceForPlayer, 0));
+        Vector3 endPosForPlayerWorld = _tilemap.CellToWorld(new Vector3Int(_mainTilemap.endXSpaceForPlayer, _mainTilemap.endYSpaceForPlayer, 0));
         bool isRandomXUnacceptable = ((spawnPoint.x >= startPosSpaceForPlayerWorld.x - offset3) && (spawnPoint.x <= endPosForPlayerWorld.x + offset3));
         bool isRandomYUnacceptable = ((spawnPoint.y >= startPosSpaceForPlayerWorld.y - offset3) && (spawnPoint.y <= endPosForPlayerWorld.y + offset3));
         return isRandomXUnacceptable && isRandomYUnacceptable;

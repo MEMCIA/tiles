@@ -9,7 +9,7 @@ public class CatPlayerAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offsetBetweenCatAndCirlce = transform.position - player.GetComponent<Player>().StartPosOfCirlce;
+        offsetBetweenCatAndCirlce = transform.position - player.GetComponent<Player>().PlayerPositionBeforeStart;
     }
 
     // Update is called once per frame
