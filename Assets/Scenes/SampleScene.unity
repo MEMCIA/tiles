@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 40110858}
   - component: {fileID: 40110859}
   - component: {fileID: 40110857}
+  - component: {fileID: 40110860}
   m_Layer: 8
   m_Name: Tilemap1
   m_TagString: TilemapGround
@@ -806,8 +807,7 @@ MonoBehaviour:
   player: {fileID: 592346103}
   ground: {fileID: 534812627}
   playerScript: {fileID: 592346109}
-  obstacleScript: {fileID: 1439200099}
-  endPlayerGameAreaY1World: 0
+  _movePlayer: {fileID: 592346106}
 --- !u!114 &40110859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,11 +820,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f361cb58162124186464c1d34ca11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 40110856}
-  ground: {fileID: 534812628}
-  tilebase: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
-  player: {fileID: 592346103}
-  obstacleScript: {fileID: 1439200099}
+  _tilemap: {fileID: 40110856}
+  _mainTilemap: {fileID: 40110860}
+  _tilebase: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
+  _fallingBoxesSpawner: {fileID: 796544936}
+--- !u!114 &40110860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40110853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcb190db33f5a4428b8a5ca528adcf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 25
+  height: 15
+  groundTile: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
+  upTile: {fileID: 11400000, guid: a93dcc38036179d4eb4ccb29dc07aaca, type: 2}
+  groundTileMap: {fileID: 40110856}
+  endOfLevelWorldT: {fileID: 1858724627}
 --- !u!1 &70200387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1351,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
   m_PrefabInstance: {fileID: 7300184406011481462}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &154797178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154797174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2a3b93fbdbbc74ca83be2ae448ccf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startCollectableShadow: {fileID: 154797174}
+  _symbolOfCollectablePrefab: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
+  _collectablesSpawner: {fileID: 1026899502}
+  SymbolsOfCollectable: []
 --- !u!1 &171740498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,10 +2919,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbef782d7659e824ca06f5019ed25d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Degrees: 230
   Number: 0
+  MovementEnded: 0
   _paw: {fileID: 9075166617535975742, guid: 5219794aa9aef2845bf8dd48089c2c7c, type: 3}
-  _life: {fileID: 732284326}
+  _lifeSymbols: {fileID: 732284326}
 --- !u!4 &389246067
 Transform:
   m_ObjectHideFlags: 0
@@ -3821,17 +3854,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 25
-  height: 68
-  smoothness: 30
-  seed: 5
+  height: 15
   groundTile: {fileID: 11400000, guid: f36a80089de0adb4da1d1b841af05dc9, type: 2}
   upTile: {fileID: 11400000, guid: a93dcc38036179d4eb4ccb29dc07aaca, type: 2}
-  backGroundTile: {fileID: 11400000, guid: cf663002aa757fb4285ecc99c7926f10, type: 2}
   groundTileMap: {fileID: 40110856}
-  obstaclesTilemap: {fileID: 1439200098}
-  backgroundTilemap: {fileID: 837429193}
-  modifier: 0
-  listPerlinHeight: 
   endOfLevelWorldT: {fileID: 1858724627}
 --- !u!4 &534812629
 Transform:
@@ -4006,18 +4032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ece5e27622704742b8d6a3bc1f53018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 40
-  height: 22
-  smoothness: 30
-  seed: 5
-  kot1: {fileID: 11400000, guid: 27023606be0fcdf4ab49b55088006581, type: 2}
-  kot2: {fileID: 0}
-  kot3: {fileID: 0}
-  kot4: {fileID: 11400000, guid: 230e75fa21534684aa74e8a9252ae8a9, type: 2}
-  GroundTileMap: {fileID: 40110856}
-  caveTileMap: {fileID: 0}
-  modifier: 0
-  listPerlinHeight: 
 --- !u!1 &543304107
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,11 +4722,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 592346109}
   speed: 10000
-  startPlayerPos: {x: 0, y: 0, z: 0}
-  ground: {fileID: 534812628}
-  tilemap: {fileID: 40110856}
-  catSpritePos: {fileID: 1898611781}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!58 &592346107
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4762,8 +4771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c7fa73adf21b042bd65d379bcf9ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 7
-  text: {fileID: 2021963258}
+  Life: 7
   hearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -4772,8 +4780,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  win: 0
   dead: 0
+  text: {fileID: 2021963258}
+  PlayerPositionBeforeStart: {x: 0, y: 0, z: 0}
+  _mainTilemap: {fileID: 40110860}
+  tilemap: {fileID: 40110856}
+  StartPlayerPos: {x: 0, y: 0, z: 0}
+  _collectableSymbols: {fileID: 154797178}
 --- !u!1 &610811629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,7 +5611,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2021963257}
-  - {fileID: 1906526934}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5831,9 +5843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334b4088c196c7a46877a64f87aa5d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
-  player: {fileID: 592346109}
-  ListLifesPictures: []
+  _prefab: {fileID: 6662224898694886905, guid: 4e4f5059e09dffd4783d188a62552245, type: 3}
+  _player: {fileID: 592346109}
 --- !u!1 &740996750
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,12 +6294,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80af529c7c00af44ab6c973d7ecfc984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 1439200099}
-  prefab: {fileID: 693304096703727632, guid: 89907ea67d612db4a919fbf40bfeb2ae, type: 3}
-  prefab2: {fileID: 7373305483686014291, guid: 88b36f298e07a3b449ae63c1dbaa6d11, type: 3}
-  tilemapWithObstacles: {fileID: 1439200098}
+  _prefab: {fileID: 693304096703727632, guid: 89907ea67d612db4a919fbf40bfeb2ae, type: 3}
+  _prefab2: {fileID: 7373305483686014291, guid: 88b36f298e07a3b449ae63c1dbaa6d11, type: 3}
+  _tileMapWithObstacles: {fileID: 1439200098}
   player: {fileID: 592346103}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
+  _tilemapRowOfObstacles: {fileID: 1439200099}
+  AreBoxesFalling: 0
 --- !u!4 &796544937
 Transform:
   m_ObjectHideFlags: 0
@@ -6819,6 +6831,7 @@ GameObject:
   - component: {fileID: 837429191}
   - component: {fileID: 837429193}
   - component: {fileID: 837429192}
+  - component: {fileID: 837429194}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -6928,6 +6941,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &837429194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837429190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c02c157c73b1844babafd67017bb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backgroundTilemap: {fileID: 837429193}
+  _backGroundTile: {fileID: 11400000, guid: cf663002aa757fb4285ecc99c7926f10, type: 2}
+  _mainTilemap: {fileID: 40110860}
 --- !u!1 &840554849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7714,14 +7742,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3468772213363478027, guid: d92b7f702c966424c9aa12271f147f1c, type: 3}
-  obstacle: {fileID: 1439200099}
-  ground: {fileID: 534812628}
+  _mainTilemap: {fileID: 40110860}
   tilemap: {fileID: 40110856}
   grid: {fileID: 2104446322}
-  shadowOfCookiePrefab: {fileID: 758501405332435849, guid: 77196b6c561e0b8458a5c2d2e301caf9, type: 3}
-  startShadowOfCookie: {fileID: 154797174}
-  destroyGround: {fileID: 40110858}
-  shadowsOfCookieList: []
+  _destroyTiles: {fileID: 40110858}
+  NumberOfCollectables: 5
 --- !u!4 &1026899503
 Transform:
   m_ObjectHideFlags: 0
@@ -9256,9 +9281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d95f5edf5f295439d4e28829172827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 1439200099}
-  prefab: {fileID: 7081747123234873358, guid: 4b6e46222934ec747a0ab22af065256d, type: 3}
-  ground: {fileID: 534812628}
 --- !u!4 &1287921453
 Transform:
   m_ObjectHideFlags: 0
@@ -10670,10 +10692,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28a17768f8bf7a49890fb5b986747ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileBase1: {fileID: 11400000, guid: e0f1648661ca4e44db5209f05b45fa74, type: 2}
-  tileMapWithObstacles: {fileID: 1439200098}
-  tileMap: {fileID: 40110856}
-  ground: {fileID: 534812628}
+  _tileBase: {fileID: 11400000, guid: e0f1648661ca4e44db5209f05b45fa74, type: 2}
+  _tileMapWithObstacles: {fileID: 1439200098}
+  _mainTilemap: {fileID: 40110860}
 --- !u!1 &1443948330
 GameObject:
   m_ObjectHideFlags: 0
@@ -18072,7 +18093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 592346103}
-  moveplayer: {fileID: 592346106}
+  offsetBetweenCatAndCirlce: {x: 0, y: 0, z: 0}
 --- !u!212 &1872127412
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18341,7 +18362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 592346103}
-  moveplayer: {fileID: 592346106}
+  offsetBetweenCatAndCirlce: {x: 0, y: 0, z: 0}
 --- !u!212 &1898611780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18524,97 +18545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f878d7c79e7ce41960a41c15752096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1906526933
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1906526934}
-  - component: {fileID: 1906526937}
-  - component: {fileID: 1906526936}
-  - component: {fileID: 1906526935}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1906526934
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906526933}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 660520499}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.4213, y: 37.6}
-  m_SizeDelta: {x: 19.845, y: 14.5568}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1906526935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906526933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaefca609516ade4b9bb0974d54f38fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ground: {fileID: 534812628}
-  tilemap: {fileID: 40110856}
---- !u!114 &1906526936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906526933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.7960785, g: 0.9686275, b: 0.9686275, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1906526937
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906526933}
-  m_CullTransparentMesh: 1
 --- !u!1 &1915463902
 GameObject:
   m_ObjectHideFlags: 0
@@ -18797,7 +18727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveplayer: {fileID: 592346106}
+  offsetBetweenCatAndCirlce: {x: 0, y: 0, z: 0}
 --- !u!1 &1948785325
 GameObject:
   m_ObjectHideFlags: 0
